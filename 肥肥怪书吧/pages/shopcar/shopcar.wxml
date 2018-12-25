@@ -1,0 +1,68 @@
+<!--pages/shopcar/shopcar.wxml-->
+<view class='shopcar_contain' hidden='{{emptyjudge}}'>
+<scroll-view class="scroll" scroll-y="true">
+  <view class="separate"></view>
+  <view wx:for="{{carts}}" bindtap='todetail' data-index="{{index}}">
+    <view class="touch-item {{istouchmove[index].isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+      <view class="cart_container">
+        <image class="item-select" bindtap="switchSelect" data-index="{{index}}" src="{{isSelect[index].ischecked?'../../images/check_HL.png':'../../images/check.png'}}" />
+
+        <image class="item-image" src="{{item.book_url}}"></image>
+          <!-- column中间列表 -->
+        <view class="column">   
+          <text class="title">{{item.bookname}}</text>
+          <view class="row"> 
+            <text class="sku-price">￥</text>
+            <text class="sku-price">{{item.discountprice}}</text>
+          </view>  
+        </view>
+        <view class="sku">
+          <view class='garbage'>
+            <image class="garbage_img" data-index='{{index}}' src="/images/garbage.png" catchtap='showModal'></image>
+          </view>
+          <!-- 数值改变开始 -->
+          <view class='quantity'>
+              <image class='minus_icon' data-index='{{index}}' src='/images/minusnumber.png' catchtap='decreaseCount'></image>
+              <text class='shop_num'>{{booklist[index].number}}</text>
+              <image class='add_icon' data-index='{{index}}' src='/images/addnumber.png' catchtap='addCount'></image>
+          </view>
+          
+          <!-- 数值改变结束 -->
+            </view>
+      </view>
+      <view class="del" catchtap="showModal" data-index="{{index}}">删除</view>
+    </view>
+    <!-- 单类间隔 -->
+    <view class="separate"></view>
+  </view>
+</scroll-view>
+<view class='reachbottom'>
+</view>
+
+
+<!-- 底部结算列表 -->
+<view class="bottom_total">
+  <view class="bottom_line"></view>
+  <view class="row">
+    <image class="item-allselect" bindtap="allSelect" src="{{isAllSelect?'../../images/check_HL.png':'../../images/check.png'}}" />
+    <text class="small_text">全选</text>
+    <text>合计:￥ </text>
+    <text class="price">{{totalMoney}}</text>
+    <button class="button-red" bindtap="toBuy" formType="submit">去结算</button>
+  </view>
+</view>
+
+</view>
+
+
+
+<!--弹窗开始-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">您确认要删除吗</view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">再想想</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">是</view>
+  </view>
+</view>
+<!-- 弹窗结束 -->

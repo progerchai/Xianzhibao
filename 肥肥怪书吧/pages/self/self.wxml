@@ -1,0 +1,76 @@
+<view class='container'>
+<!-- 头像区区域开始 -->
+  <view class="userinfo"> 
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+<!-- 头像区域结束 --> 
+<!-- 列表一开始 -->
+  <view class='orders_list'>
+  <view class='block'></view>
+    <view class='all_orders' bindtap='all_orders'>
+      <text class='iconfont icon-quanbudingdan' decode="{{true}}">&nbsp;&nbsp;</text>
+      <text class='text'>全部订单</text>
+      <view class='right'><text class='iconfont icon-youjiantou'></text></view>
+    </view>
+    <view class="divLine"></view>
+    <view class='waitpay_list' bindtap='waitpay_list'>
+      <text class='iconfont icon-daifukuan' decode="{{true}}">&nbsp;&nbsp;</text>
+      <text  class='text'>待付款</text>
+      <view class='right'><text class='iconfont icon-youjiantou'></text></view>
+      
+    </view>
+    <view class="divLine"></view>
+    <view class='waitsend_list' bindtap='waitsend_list'>
+      <text class='iconfont icon-daifahuo' decode="{{true}}">&nbsp;&nbsp;</text>
+      <text class='text'>待发货</text>
+      <view class='right'><text class='iconfont icon-youjiantou'></text></view>
+    </view> 
+    <view class="divLine"></view>
+    <view class='waitreceiv_list' bindtap='waitreceiv_list'> 
+      <text class='iconfont icon-daishouhuo' decode="{{true}}">&nbsp;&nbsp;</text>
+      <text class='text'>待收货</text>
+      <view class='right'><text class='iconfont icon-youjiantou'></text></view>
+    </view>
+    <view class="divLine"></view>
+    <view class='waitback_list' bindtap='waitback_list'> 
+      <text class='iconfont icon-tuikuan' decode="{{true}}">&nbsp;&nbsp;</text>
+      <text class='text'>退款中</text>
+      <view class='right'><text class='iconfont icon-youjiantou'></text></view>
+    </view>
+     <view class='among'></view>
+  </view>
+<!-- 列表一结束 -->
+<!-- 列表二开始 -->
+<view class='otherscontainer'>
+  <view class='mycollections' bindtap='mycollections'>
+      <text class='iconfont icon-shoucang' decode="{{true}}">&nbsp;&nbsp;</text>  
+      <text class='text'>我的收藏</text>
+      <view class='right'><text class='iconfont icon-youjiantou'></text></view>
+  </view>
+  <view class="divLine"></view>
+    <view class='myaddress' bindtap='myaddress'>
+      <text class='iconfont icon-dizhi' decode="{{true}}">&nbsp;&nbsp;</text>  
+      <text class='text'>我的地址</text>
+      <view class='right'><text class='iconfont icon-youjiantou'></text></view>
+  </view> 
+  <view class="divLine"></view>
+  <view class='mycards' bindtap='mycards'>
+      <text class='iconfont icon-kaquan' decode="{{true}}">&nbsp;&nbsp;</text>  
+      <text class='text'>可用卡券</text>
+      <view class='right'><text class='iconfont icon-youjiantou'></text></view>
+  </view>
+  <view class="divLine"></view>
+    <view class='myoptions' bindtap='myoptions'>
+      <text class='iconfont icon-yijianfankui' decode="{{true}}">&nbsp;&nbsp;</text>  
+      <text class='text'>意见反馈</text>
+      <view class='right'><text class='iconfont icon-youjiantou'></text></view>
+  </view>
+   <view class='among'></view>
+</view>
+ <view class='bottom'></view>
+<!-- 列表二结束 -->
+</view>

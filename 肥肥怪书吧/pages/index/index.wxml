@@ -1,0 +1,164 @@
+<!--index.wxml-->
+<view class='top'>
+<!-- 搜索条开始 -->
+  <view class='search_row'>
+    <view class="search">
+    <view class='contain' bindtap='search_page'>
+     <icon class="searchicon" size='17' type='search'></icon>
+        <text class='search_input'>请输入关键字</text>
+    </view>
+    </view>
+  </view>
+  <!-- 搜索条结束 -->
+  <!-- 图片展示开始 -->
+  <view class='background_pic'>
+   <image style="width: 100%; height: 250rpx; background-color: #eeeeee;" mode="scaleToFill" src="http://139.199.0.182/BookStoreProject/public/index.png"></image>
+  </view>
+  <!-- 图片展示结束 -->
+  <!--跑马灯开始-->
+  <view class='swiper'>
+<swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+  <block wx:for="{{msgList}}" wx:key="unique">
+   <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+    <swiper-item>
+     <view class="swiper_item">{{item.title}}</view>
+    </swiper-item>
+   </navigator>
+  </block>
+ </swiper>
+ </view>
+<!--跑马灯结束-->
+
+<!-- 模块分区开始 -->
+<view class='module'>
+      <view class='list resoutuijian'>
+        <view class='content_text'> 
+        <text class='title'>热搜推荐</text>
+        <!-- 设置bind函数实现跳转 -->
+        <text class='turntodetail' bindtap='resoutuijian'>查看更多 ></text>
+        </view>
+        <view class='content_list'>
+          <view class='example' wx:for="{{resoutuijian}}" data-bookid="{{item.bookid}}" wx:key="{{item.bookid}}" wx:if="{{index<3}}" bindtap="toDetail">
+            <view class='example_list'>
+            <view class='top_pic'>
+                  <image class='example_pic' src="{{item.book_url}}"></image>
+            </view>
+            <view class='introduce'>
+            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text class="sku-price">￥{{item.discountprice}}</text>
+            </view>
+            </view>
+          </view>
+          
+        </view>
+      </view>
+
+    <view class='list jingpinhaoshu'>
+        <view class='content_text'>
+        <text class='title'>精品好书</text>
+        <text class='turntodetail'  bindtap='jingpinhaoshu'>查看更多 ></text>
+        </view>
+     <view class='content_list'>
+      <view class='example' wx:for="{{jingpinhaoshu}}" data-bookid="{{item.bookid}}" wx:key="{{item.bookid}}" wx:if="{{index<3}}" bindtap="toDetail">
+            <view class='example_list'>
+            <view class='top_pic'>
+                  <image class='example_pic' src="{{item.book_url}}"></image>
+            </view>
+            <view class='introduce'>
+            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text class="sku-price">￥{{item.discountprice}}</text>
+            </view>
+            </view>
+          </view>
+       </view>
+    </view>
+
+    <view class='list xinshuremai'>
+      <view class='content_text'>
+      <text class='title'>新书热卖</text>
+      <text class='turntodetail' bindtap='xinshuremai'>查看更多 ></text>
+      </view>
+      <view class='content_list'>
+     <view class='example' wx:for="{{xinshuremai}}" data-bookid="{{item.bookid}}" wx:key="{{item.bookid}}" wx:if="{{index<3}}" bindtap="toDetail">
+            <view class='example_list'>
+            <view class='top_pic'>
+                  <image class='example_pic' src="{{item.book_url}}"></image>
+            </view>
+            <view class='introduce'>
+            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text class="sku-price">￥{{item.discountprice}}</text>
+            </view>
+            </view>
+          </view>
+     </view>
+    </view>
+
+     <view class='list jikemiaosha'>
+        <view class='content_text'> 
+        <text class='title'>热搜推荐</text>
+        <text class='turntodetail' bindtap='jikemiaosha'>查看更多 ></text>
+        </view>
+        <view class='content_list'>
+          <view class='example' wx:for="{{jikemiaosha}}" data-bookid="{{item.bookid}}" wx:key="{{item.bookid}}" wx:if="{{index<3}}" bindtap="toDetail">
+            <view class='example_list'>
+            <view class='top_pic'>
+                  <image class='example_pic' src="{{item.book_url}}"></image>
+            </view>
+            <view class='introduce'>
+            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text class="sku-price">￥{{item.discountprice}}</text>
+            </view>
+            </view>
+          </view>
+          
+        </view>
+      </view>
+
+
+</view>
+
+      <view class='list ershoujiushu'>
+        <view class='content_text'> 
+        <text class='title'>热搜推荐</text>
+        <!-- 设置bind函数实现跳转 -->
+        <text class='turntodetail' bindtap='ershoujiushu'>查看更多 ></text>
+        </view>
+        <view class='content_list'>
+          <view class='example' wx:for="{{ershoujiushu}}" data-bookid="{{item.bookid}}" wx:key="{{item.bookid}}" wx:if="{{index<3}}" bindtap="toDetail">
+            <view class='example_list'>
+            <view class='top_pic'>
+                  <image class='example_pic' src="{{item.book_url}}"></image>
+            </view>
+            <view class='introduce'>
+            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text class="sku-price">￥{{item.discountprice}}</text>
+            </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    <view class='list ershouzahuo'>
+        <view class='content_text'> 
+        <text class='title'>热搜推荐</text>
+        <!-- 设置bind函数实现跳转 -->
+        <text class='turntodetail' bindtap='ershouzahuo'>查看更多 ></text>
+        </view>
+        <view class='content_list'>
+          <view class='example' wx:for="{{ershouzahuo}}" data-bookid="{{item.bookid}}" wx:key="{{item.bookid}}" wx:if="{{index<3}}" bindtap="toDetail">
+            <view class='example_list'>
+            <view class='top_pic'>
+                  <image class='example_pic' src="{{item.book_url}}"></image>
+            </view>
+            <view class='introduce'>
+            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text class="sku-price">￥{{item.discountprice}}</text>
+            </view>
+            </view>
+          </view>
+          
+        </view>
+      </view>
+
+
+<!-- 模块分区结束 -->
+</view>

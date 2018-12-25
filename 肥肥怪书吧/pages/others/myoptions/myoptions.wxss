@@ -1,0 +1,229 @@
+.container{
+    background-color: #f6f6f6;
+    padding: 0;
+    padding-top: 30rpx;
+    font-size: 11pt;
+    box-sizing: border-box;
+}
+
+.item-labels{
+    flex: 1;
+}
+.item-label{
+    flex: 1;
+    background: #7acfa6;
+    color: #fff;
+    font-size: 9pt;
+    padding: 4rpx 10rpx;
+    border-radius: 3px;
+    margin: 0 5rpx;
+}
+.item-hd{
+    display: flex;
+    align-items: center;
+}
+.btn-id {
+    flex-shrink: 0;
+    color: #aaa;
+    font-size: 10pt;
+    margin-right: 10rpx;
+}
+
+.item-bd{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding:  0 10rpx 15rpx;
+    font-size: 10pt;
+}
+.item-content {
+    padding-bottom: 20rpx;
+}
+.item-comment{
+    display: flex;
+    border-top: 1rpx solid #eee;
+    padding: 10rpx 5rpx;
+}
+.item-comment-img{
+    flex-shrink: 0;
+    width: 100px;
+    height: 70px;
+    margin: 10rpx 20rpx 0 10rpx;
+    border-radius: 3px;
+}
+.item-comment-bd{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 20px;
+}
+.item-comment-name{
+    font-size: 9pt;
+    color: #999;
+}
+
+.issues-label{
+    font-size: 10pt;
+    line-height: 100%;
+    color: #999;
+    margin: 25rpx 20rpx 15rpx;
+}
+.issues-panel{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: #fff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.issues-img-panel{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15rpx 25rpx;
+}
+.issues-img-panel.error{
+    background: rgba(231, 138, 176, 0.06);
+}
+.issues-input{
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15rpx 25rpx;
+}
+.issues-input.error{
+    background: rgba(231, 138, 176, 0.06);
+}
+.issues-textarea{
+    width: 100%;
+    padding: 25rpx;
+    min-height: 225rpx;
+    box-sizing: border-box;
+}
+.issues-textarea.error{
+    background: rgba(231, 138, 176, 0.06);
+}
+.issues-photo-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    margin: 20rpx;
+    margin-right: 0;
+    width: 135rpx;
+    height: 135rpx;
+    border: 1rpx solid #e5e5e5;
+    border-radius: 5rpx;
+}
+.issues-photo-item:active{
+    opacity: .8;
+}
+.issues-photo-item .remind-img{
+    padding: 0;
+}
+.issues-photo-item image{
+    width: 100%;
+    height: 100%;
+}
+.add-photo:active {
+    background: #f0f0f0;
+}
+.add-photo::before, .add-photo::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #e5e5e5;
+}
+.add-photo:active::before, .add-photo:active::after{
+    background: #ddd;
+}
+.add-photo::before {
+    width: 10rpx;
+    height: 80rpx;
+    margin-top: -40rpx;
+    margin-left: -5rpx;
+}
+.add-photo::after {
+    width: 80rpx;
+    height: 10rpx;
+    margin-top: -5rpx;
+    margin-left: -40rpx;
+}
+
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40rpx 3%;
+    height: 80rpx;
+    border-radius: 3px;
+    text-align: center;
+    background-color: #118fff;
+    color: #fff;
+    font-size: 12pt;
+    line-height: 150%;
+    padding: 0;
+    border: none;
+}
+.submit-btn.disabled{
+    opacity: .7;
+}
+.submit-btn:active{
+    opacity: .7;
+}
+
+/*----------------------*/
+.add_pic {
+  padding: 0 40rpx;
+  background: #fff;
+}
+
+.add_pic view {
+  display: inline-block;
+  margin-top: 20rpx;
+  width: 430rpx;
+  height: 200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  background: url(http://bmob-cdn-14867.b0.upaiyun.com/2017/11/23/e93d28a14095af18801d3c1c68e08fe7.png) no-repeat left center;
+  background-size: 160rpx auto;
+  padding-left: 80rpx;
+  color: #b2b2b2;
+}
+
+.image_box {
+  width: 100%;
+  background: #fff;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  padding: 10px 0 10rpx;
+}
+
+.picPre {
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.picPre image {
+  width: 100%;
+  height: 180rpx;
+}
+
+.picPre view {
+  position: absolute;
+  right: 0px;
+  top: -20rpx;
+  width: 15px;
+  height: 15px;
+  background: url(http://bmob-cdn-14867.b0.upaiyun.com/2017/11/23/b93323e440f4c3998034dbb9011a1e1d.png) no-repeat;
+  background-size: cover;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,20 @@
+.contains{
+  text-align: center;
+  color: #C3C3C3;
+}
+.center_pic{
+  width: 100%;
+  height: 286rpx;
+  margin-top: 230rpx;
+}
+.center_btn{
+ width:200rpx;
+ height: 80rpx;
+ margin-top: 20rpx;
+  color: #FE9199;
+  background: #fff;
+  border:1rpx solid #FE9199;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,159 @@
+page{ 
+  background-color: #F6F8F8;
+}
+.mycollection{
+  width: 100%;
+  height: 1500rpx;
+  background-color: #ffffff;
+  text-align: center;
+  color: #C3C3C3;
+}
+.mycollection .center_pic{
+  width: 100%;
+  height: 286rpx;
+}
+.mycollection .center_btn{
+ width:200rpx;
+ height: 80rpx;
+  color: #FE9199;
+  background: #fff;
+  border:1rpx solid #FE9199;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mycollections{
+width: 100%;
+}
+.orderListDetails{
+	display: flex;
+  width: 100%;
+	flex-direction: column;
+}
+
+.orderListDetails .image{
+  height: 200rpx;
+  width: 200rpx;
+}
+.orderListDetails .productImg{
+  width: 30%;
+  padding: 10rpx;
+}
+.productInfo{
+  width: 70%;
+  padding-top: 20rpx;
+  padding-bottom: 10rpx;
+}
+.productInfo .productTitle{
+height: 120rpx;
+font-size: 30rpx;
+text-overflow: -o-ellips0is-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+.priceitem{
+  display: flex;
+  flex-direction: row;
+}
+.price{
+    width: 200rpx;
+  flex-direction: row;
+}
+.garbage_img{
+  width: 48rpx;
+  height: 48rpx;
+  margin-left: 208rpx;
+  margin-top: -300rpx;
+}
+.productInfo .productPrice{
+font-size: 35rpx;
+color: red;
+}
+.productInfo .productOldPrice{
+  text-decoration:line-through;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
+  font-size: 25rpx;
+  color: #9C9C9C;
+}
+.status{
+  color:#9C9C9C;
+  font-size: 30rpx;
+  margin-left: 10rpx;
+  margin-top: -5rpx;
+  float: right;
+  margin-right: 40rpx;
+}
+.item{
+  display: flex;
+  flex-direction: row;
+  height: 230rpx;
+}
+.space{
+  width: 100%;
+  height: 10px;
+  background-color: #E0E0DF;
+}
+
+/* 弹窗开始 */
+
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  padding-bottom: 40rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #ec5300;
+  text-align: center;
+}
+/* 弹窗结束 */

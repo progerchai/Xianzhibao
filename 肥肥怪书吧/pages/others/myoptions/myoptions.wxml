@@ -1,0 +1,29 @@
+<view class="container">
+
+  <block >
+    <text class="issues-label">新建反馈</text>
+    <form bindsubmit="submitForm">
+      <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
+      <view class="issues-panel">
+        <view class="issues-input">
+          <input placeholder="请输入反馈标题" name="title" value="{{title}}" />
+        </view>
+        <textarea class="issues-textarea" cursor-spacing="50" placeholder="请输入反馈内容" name="content" value="{{content}}"></textarea>
+      </view>
+
+      <block>
+        <text class="issues-label">选择图片（可选）</text>
+        <view class="issues-img-panel">
+          <view class="issues-photo-item add-photo" bindtap="uploadPic" wx:if="{{!isSrc}}"></view>
+          <view wx:if="{{isSrc}}" class="image_box">
+            <view class="picPre">
+              <image src="{{src}}" mode="aspectFit"></image>
+              <view bindtap="clearPic"></view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <button class="submit-btn" loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">提交反馈</button>
+    </form>
+  </block>
+</view>

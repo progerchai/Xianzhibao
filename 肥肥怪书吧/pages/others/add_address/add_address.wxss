@@ -1,0 +1,69 @@
+.add_address{
+height: 100%;
+}
+.block_line{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  height: 100rpx;
+  border-bottom: 1rpx solid #c1c1c1;
+}
+.block_line .block_input{
+margin-left: 40rpx;
+}
+.submit{
+  margin-top: 690rpx;
+}
+.submit .submit_btn{
+  height: 100rpx;
+}
+
+/* 三级联动 */
+.dialog-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 8;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.picker-view {
+  width: 100%;
+  display: flex;
+  z-index:12;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  height: 40vh;
+}
+
+.picker-item {
+  line-height: 70rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  text-align: center;
+}
+/* 三级联动 */
+
+.address{
+ display: flex;
+ flex-direction: row;
+}
+.provinces{
+  flex:1;
+  text-align:center;
+}
+.citys{
+  flex:1;
+  text-align:center;
+}
+.areas{
+  flex:1;
+  text-align:center;
+}

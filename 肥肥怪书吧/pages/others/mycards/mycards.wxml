@@ -1,0 +1,6 @@
+<!--pages/others/mycards/mycards.wxml-->
+<view class='contains'>
+<image class='center_pic' src='../../../images/nothing.jpg'></image>
+您暂无可用卡券
+<button class='center_btn' bindtap='gotoshop'>去逛逛</button>
+</view>

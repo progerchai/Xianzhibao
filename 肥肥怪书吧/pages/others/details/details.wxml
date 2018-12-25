@@ -1,0 +1,133 @@
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:key="unique">
+    <swiper-item>
+      <image src="{{item}}" data-src="{{item}}" bindtap="previewImage"></image>
+    </swiper-item>
+  </block> 
+</swiper>
+<scroll-view scroll-y="true">
+  <view class="detail">
+    <text class="title">{{bookmsg.bookname}}</text>
+    <text class="about">作者：{{bookmsg.author}},出版社：{{bookmsg.press}}，出版日期：{{bookmsg.publication_date}}</text>
+    <view class='share'>
+    <text class="price" decode="{{true}}">&nbsp;&nbsp;￥{{bookmsg.discountprice}}</text>
+    <button class='shareicon' style='flex-direction: column;' open-type="share">
+      <text class='iconfont icon-fenxiang'></text>
+      <view class='sharetext'><text>分享</text></view>
+      </button>
+    <button class='shareicon' style='flex-direction: column;' bindtap='collection' wx:if="{{!iscollection}}">
+      <text class='iconfont icon-aixin'></text>
+      <view class='sharetext'><text>收藏</text></view>
+      </button>
+    <button class='shareicon' style='flex-direction: column;' bindtap='collection' wx:if="{{iscollection}}">
+      <text class='iconfont icon-aixin' style='color:#E70510;'></text>
+      <view class='sharetext'><text>收藏</text></view>
+      </button>
+    <!-- 分享iconfont -->
+    </view>
+  </view>
+  <view class="separate"></view>
+  <!-- sku选择 -->
+  <view class='details' bindtap="detailinfomation">
+  <text >详细参数</text>
+  <text class='iconfont icon-youjiantou'></text>
+  </view>
+  
+  <view class="separate"></view>
+
+  <view class='number'>
+  <view class='numberchangeleft'>
+    <text bindtap="toggleDialog">请选择购买数量</text>
+  </view> 
+  <!-- 选择修改 -->
+    <view class='numberchange'>
+        <image class='minus_icon' src='/images/minusnumber.png' catchtap='minus'></image>
+        <text class='shop_num'>{{boughtnumber}}</text>
+        <image class='add_icon' src='/images/addnumber.png' catchtap='add' ></image>
+    </view>
+  </view>
+
+
+  <view class="separate"></view>
+  <view class='comments'>
+    <text>商品评价</text>
+    <text class="text-remark">东西还可以，好评~</text>
+    <view class='commentdetail' wx:for="{{comments}}">
+      <text >{{item.comment}}</text>
+    </view>
+  </view>
+  <view class="separate"></view>
+  <view class="temp"></view>
+</scroll-view>
+<!-- 底部悬浮栏 -->
+<view class="detail-nav">
+  <image bindtap="toHome" src="../../../images/home.png" />
+  <view class="line_nav"></view>
+  <image bindtap="toCar" src="../../../images/shopcar.png" />
+  <button class="button-green" bindtap="addCar" formType="submit">加入购物车</button>
+  <button class="button-red" bindtap="immeBuy" formType="submit">立即购买</button>
+</view>
+
+<!-- 抽屉层开始 -->
+<view class="shop-select-info" hidden="{{isShowSelectInfo}}">
+  <view class="mask-layer" catchtouchstart="hiddenSelectInfo"></view>
+  <view class="shop-select-info-content">
+
+    <!--商品图片和价格、库存-->
+    <view class="ui-flex ui-padding-10">
+     <view class='select-image'>
+       <image class="select-info-img" src="{{bookmsg.book_url}}"></image>
+     </view>
+        <view class="select-info-price">
+          <text decode="{{true}}">￥{{bookmsg.discountprice}}&nbsp;元</text>
+        </view>
+
+      <!--关闭弹窗按钮-->
+      <icon type="clear" class="select-info-close" catchtap="hiddenSelectInfo"></icon>
+    </view>
+
+
+      <!--商品属性列表-->
+      <view class="shuxingdetails">
+      <view class='context'>
+            <text>产品参数</text>
+            <view class="divLine"></view>
+            <view class='list'>
+              <view class='listname'>书名</view>
+              <view class='detail_content'>{{bookmsg.bookname}}</view>
+            </view>
+            <view class="divLine"></view>
+            <view class='list'>
+              <view class='listname'>作者</view>
+              <view class='detail_content'>{{bookmsg.author}}</view>
+            </view>
+            <view class="divLine"></view>
+            <view class='list'>
+              <view class='listname'>ISBN编号</view>
+              <view class='detail_content'>1234567890123</view>
+            </view>
+            <view class="divLine"></view>
+            <view class='list'>
+              <view class='listname'>出版社名称</view>
+              <view class='detail_content'>{{bookmsg.press}}</view>
+            </view>
+            <view class="divLine"></view>
+            <view class='list'>
+              <view class='listname'>出版日期</view>
+              <view class='detail_content'>{{bookmsg.publication_date}}</view>
+            </view>
+            <view class="divLine"></view>
+            <view class='list'>
+              <view class='listname'>定价</view>
+              <view class='detail_content'>{{bookmsg.discountprice}}元</view>
+            </view>
+      </view>
+  
+
+    
+      </view>
+
+      <!--购买数量-->
+  </view>
+</view>
+<!-- 抽屉层结束 -->

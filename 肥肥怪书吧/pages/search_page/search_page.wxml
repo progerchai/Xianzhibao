@@ -1,0 +1,44 @@
+<!--pages/search_page/search_page.wxml-->
+<view class="page">
+    <!-- top部分搜索框开始 -->
+        <view class="search-bar">
+            <view class="search-bar__form">
+              <view class='search_bar_line'>
+                  <view class="search-bar__box">
+                      <icon class="icon-search_in-box" type="search" size="14"></icon>
+                      <input type="text" class="search-bar__input" placeholder="请输入要查找的关键字" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="judge" />
+                      <view class="icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                          <icon type="clear" size="14"></icon>
+                      </view>
+                  </view>
+              </view>       
+             </view>
+        <!-- top搜索框结束 -->
+        <!-- searchbar-result被修饰 -->
+        <!-- cell被修饰 -->
+        <!-- 内容开始 -->
+        <view class="cells searchbar-result" wx:if="{{judge!= 0}}">
+            <navigator url="" class="cell" hover-class="cell_active">
+                <view class="cell__bd">
+                    <view>实时搜索文本0</view>
+                </view>
+            </navigator>
+            <navigator url="" class="cell" hover-class="cell_active">
+                <view class="cell__bd">
+                    <view>实时搜索文本1</view>
+                </view>
+            </navigator>
+            <navigator url="" class="cell" hover-class="cell_active">
+                <view class="cell__bd">
+                    <view>实时搜索文本2</view>
+                </view>
+            </navigator>
+            <navigator url="" class="cell" hover-class="cell_active">
+                <view class="cell__bd">
+                    <view>实时搜索文本3</view>
+                </view>
+            </navigator>
+        </view>
+        <!-- 内容结束 -->
+       </view>
+</view>

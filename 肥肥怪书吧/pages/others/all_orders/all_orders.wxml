@@ -1,0 +1,195 @@
+<!--pages/others/all_orders/all_orders.wxml-->
+
+<view class="navbar">
+	<text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view> 
+<!-- 已完成模块开始 -->
+<view  class='ywc' wx:if="{{currentTab==0}}"> 
+
+
+<view class='dfk' wx:if="{{yiwancheng.length==0}}"> 
+<image class='center_pic' src='../../../images/nothing.jpg'></image>
+{{text}}
+<button class='center_btn' bindtap='gotoshop'>去逛逛</button>
+</view>
+
+<view wx:else>
+<view wx:for="{{yiwancheng}}" wx:key="{{item.bookid}}">  
+<!-- 用商品的bookid返回详细页面 -->
+<view bindtap="toOrderDetail" class="orderDetails" data-index='{{index}}' data-status="5" data-orderid='{{yiwancheng[index].orderid}}'>
+	<view class="orderListTitle"> 
+		<view class="userImg"><image src="{{infoimage}}"></image></view>
+		<text class="userName">{{userName}}</text>
+		<text class="orderStatus">交易成功</text>
+	</view>
+	<view class="orderListDetails">
+		<view class="productImg">
+			<image src="{{yiwancheng_mes[index].book_url}}"></image>
+		</view>
+		<view class="productInfo">
+			<view class="productTitle">{{yiwancheng_mes[index].bookname}}</view>
+			<text class="productPrice">￥{{yiwancheng_mes[index].discountprice}}</text>
+			<text class="productQuantity">x{{item.amount}}</text>
+		</view>
+	</view>
+	<view class="productCount">
+		<view>合计：￥<text>{{item.amount*yiwancheng_mes[index].discountprice}}</text></view>
+    <!-- 合计：数量乘以单价 -->
+	</view>
+</view>	
+</view>
+</view>
+</view>
+<!-- 已完成模块结束 -->
+<!-- 待付款模块开始 -->
+<view  class='ywc' wx:if="{{currentTab==1}}"> 
+
+
+<view class='dfk' wx:if="{{daifukuan.length==0}}"> 
+<image class='center_pic' src='../../../images/nothing.jpg'></image>
+{{text}}
+<button class='center_btn' bindtap='gotoshop'>去逛逛</button>
+</view>
+
+<view wx:else>
+<view wx:for="{{daifukuan}}" wx:key="{{item.bookid}}">  
+<!-- 用商品的bookid返回详细页面 -->
+<view bindtap="toOrderDetail" class="orderDetails" data-index='{{index}}' data-status="4" data-orderid='{{daifukuan[index].orderid}}'>
+	<view class="orderListTitle"> 
+		<view class="userImg"><image src="{{infoimage}}"></image></view>
+		<text class="userName">{{userName}}</text>
+		<text class="orderStatus">待付款</text>
+	</view>
+	<view class="orderListDetails">
+		<view class="productImg">
+		  <image src="{{daifukuan_mes[index].book_url}}"></image>
+		</view>
+		<view class="productInfo">
+					<view class="productTitle">{{daifukuan_mes[index].bookname}}</view>
+			<text class="productPrice">￥{{daifukuan_mes[index].discountprice}}</text>
+			<text class="productQuantity">x{{item.amount}}</text>
+		</view>
+	</view>
+	<view class="productCount">
+		<view>合计：￥<text>{{item.amount*daifukuan_mes[index].discountprice}}</text></view>
+    <!-- 合计：数量乘以单价 -->
+	</view>
+</view>	
+</view>
+</view>
+</view>
+<!-- 待付款模块结束 -->
+<!-- 待发货模块开始 -->
+<view  class='ywc' wx:if="{{currentTab==2}}"> 
+
+
+<view class='dfk' wx:if="{{daifahuo.length==0}}"> 
+<image class='center_pic' src='../../../images/nothing.jpg'></image>
+{{text}}
+<button class='center_btn' bindtap='gotoshop'>去逛逛</button>
+</view>
+
+<view wx:else>
+<view wx:for="{{daifahuo}}" wx:key="{{item.bookid}}">  
+<!-- 用商品的bookid返回详细页面 -->
+<view bindtap="toOrderDetail" class="orderDetails" data-index='{{index}}' data-status="1" data-orderid='{{daifahuo[index].orderid}}'>
+	<view class="orderListTitle"> 
+		<view class="userImg"><image src="{{infoimage}}"></image></view>
+		<text class="userName">{{userName}}</text>
+		<text class="orderStatus">待发货</text>
+	</view>
+	<view class="orderListDetails">
+		<view class="productImg">
+			<image src="{{daifahuo_mes[index].book_url}}"></image>
+		</view>
+		<view class="productInfo">
+					<view class="productTitle">{{daifahuo_mes[index].bookname}}</view>
+			<text class="productPrice">￥{{daifahuo_mes[index].discountprice}}</text>
+			<text class="productQuantity">x{{item.amount}}</text>
+		</view>
+	</view>
+	<view class="productCount">
+		<view>合计：￥<text>{{item.amount*daifahuo_mes[index].discountprice}}</text></view>
+    <!-- 合计：数量乘以单价 -->
+	</view>
+</view>	
+</view>
+</view>
+</view>
+<!-- 待发货模块结束 -->
+<!-- 待收货模块开始 -->
+<view  class='ywc' wx:if="{{currentTab==3}}"> 
+
+
+<view class='dfk' wx:if="{{daishouhuo.length==0}}"> 
+<image class='center_pic' src='../../../images/nothing.jpg'></image>
+{{text}}
+<button class='center_btn' bindtap='gotoshop'>去逛逛</button>
+</view>
+
+<view wx:else>
+<view wx:for="{{daishouhuo}}" wx:key="{{item.bookid}}">  
+<!-- 用商品的bookid返回详细页面 -->
+<view bindtap="toOrderDetail" class="orderDetails" data-index='{{index}}' data-status="2" data-orderid='{{daishouhuo[index].orderid}}'>
+	<view class="orderListTitle"> 
+		<view class="userImg"><image src="{{infoimage}}"></image></view>
+		<text class="userName">{{userName}}</text>
+		<text class="orderStatus">待收货</text>
+	</view>
+	<view class="orderListDetails">
+		<view class="productImg">
+			<image src="{{daishouhuo_mes[index].book_url}}"></image>
+		</view>
+		<view class="productInfo">
+				<view class="productTitle">{{daishouhuo_mes[index].bookname}}</view>
+			<text class="productPrice">￥{{daishouhuo_mes[index].discountprice}}</text>
+			<text class="productQuantity">x{{item.amount}}</text>
+		</view>
+	</view>
+	<view class="productCount">
+		<view>合计：￥<text>{{item.amount*daishouhuo_mes[index].discountprice}}</text></view>
+    <!-- 合计：数量乘以单价 -->
+	</view>
+</view>	
+</view>
+</view>
+</view>
+<!-- 待收货模块结束 -->
+<!-- 退款中模块开始 -->
+<view  class='ywc' wx:if="{{currentTab==4}}"> 
+
+
+<view class='dfk' wx:if="{{tuikuanzhong.length==0}}"> 
+<image class='center_pic' src='../../../images/nothing.jpg'></image>
+{{text}}
+<button class='center_btn' bindtap='gotoshop'>去逛逛</button>
+</view>
+
+<view wx:else>
+<view wx:for="{{tuikuanzhong}}" wx:key="{{item.bookid}}">  
+<!-- 用商品的bookid返回详细页面 -->
+<view bindtap="toOrderDetail" class="orderDetails" data-index='{{index}}' data-status="3" data-orderid='{{tuikuanzhong[index].orderid}}'>
+	<view class="orderListTitle"> 
+		<view class="userImg"><image src="{{infoimage}}"></image></view>
+		<text class="userName">{{userName}}</text>
+		<text class="orderStatus">待退款</text>
+	</view>
+	<view class="orderListDetails">
+		<view class="productImg">
+			<image src="{{tuikuanzhong_mes[index].book_url}}"></image>
+		</view>
+		<view class="productInfo">
+					<view class="productTitle">{{tuikuanzhong_mes[index].bookname}}</view>
+			<text class="productPrice">￥{{tuikuanzhong_mes[index].discountprice}}</text>
+			<text class="productQuantity">x{{item.amount}}</text>
+		</view>
+	</view>
+	<view class="productCount">
+		<view>合计：￥<text>{{item.amount*tuikuanzhong_mes[index].discountprice}}</text></view>
+    <!-- 合计：数量乘以单价 -->
+	</view>
+</view>	
+</view>
+</view>
+</view>
+<!-- 退款中模块结束 -->

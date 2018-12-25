@@ -1,0 +1,57 @@
+<scroll-view>
+<view class="wraper">
+	<!-- 收货地址 --> 
+	<view class="address">
+    <image src="/images/address.png"  mode="scaleToFill"></image>
+		<view>
+    <text class='iconfont icon-dizhi'></text>
+			<text class="name">收货人：{{address_name}}</text><text class="number">{{address_phone}}</text>
+		</view>
+		<view class="addressdetail">
+    <view class='detailcontent'>
+      <text >收货地址：{{address_province}}-{{address_city}}-{{address_area}}-{{address_detail}}
+      </text>
+    </view>
+      <view class='icon'>
+        <text class='iconfont icon-yijianfankui' bindtap='changeaddress'></text>
+      </view>
+		</view>
+
+      <image src="/images/address.png"  mode="scaleToFill"></image>
+	</view>
+	<!-- 商品订单详情 -->
+	<view class="productDetails">
+		<view class="orderListTitle">
+			<view class="userImg"><image src="{{userInfo.avatarUrl}}"></image></view>
+			<text class="userName">{{userInfo.nickName}}</text>
+		</view>
+    <!-- 进行循环 -->
+		<view class="orderListDetails" wx:for="{{mylist}}">
+			<view class="productImg">
+				<image src="{{item.book_url}}"></image>
+			</view>
+			<view class="productInfo">
+				<view class="productTitle">{{item.bookname}},{{item.press}},{{item.publication_data}},{{item.author}}</view>
+				<text class="productPrice">￥{{item.discountprice}}</text>
+				<text class="productQuantity">x{{acountlist[index]}}</text>
+			</view>
+		</view>
+		<view class="productCount">
+			<view>共计{{mylist.length}}件商品 合计：￥<text>{{totalmoney}}</text></view>
+		</view>
+		<view class="productCount">
+			<text class="expenses">配送费</text><text class="noExpenses">免配送费</text>
+		</view>
+	</view>	
+	<!-- 提交订单 -->
+	<view class="submitOrder">
+		<view bindtap="topay" class="submit">
+			<button class="submitBtn">提交订单</button>
+		</view>
+		<view class="account">
+			<view class="count">总计: <text class="price">￥{{totalmoney}}</text></view>
+			<text>免配送费</text>
+		</view>
+	</view>
+</view>
+</scroll-view>

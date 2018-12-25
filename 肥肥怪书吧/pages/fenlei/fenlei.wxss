@@ -1,0 +1,168 @@
+Page {
+  background: #fff;
+} 
+.search_row{
+display: flex;
+justify-content: center;
+flex-direction: row;
+background-color: #ffffff;
+height: 70rpx;
+width: 100%;
+}
+.search{
+  margin-top: 10rpx;
+  border: 1px solid #c1c1c1;
+  border-radius: 25rpx;
+  width: 80%;
+  height: 70%;
+}
+.searchicon{
+  display: flex;
+  align-items: center;
+  margin-top: 5rpx;
+
+}
+.contain{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.search_input{
+  font-size: 34rpx;
+  color: #d0d0d0;
+  display: flex;
+  align-items: center;
+  margin-top: 5rpx;
+}
+/* searchbar结束 */
+
+
+.bar_container {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+}
+
+.left_tabbar {
+  width: 26%;
+}
+
+.right_content {
+  width: 74%;
+}
+
+.left_tabbar_item {
+  color: #7c7c7c;
+  font-size: 26rpx;
+  width: 100%;
+  padding: 20rpx 0;
+  text-align: center;
+  border-bottom: 1rpx solid #fff;
+}
+
+.left_tabbar_list {
+  background: #eee;
+}
+
+.left_tabbar .active {
+  background: #fff;
+  color: #000;
+  transition: all 0.5s;
+  animation: show 0.5s;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity: 0;
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateY(360deg);
+  }
+}
+
+
+
+.tab_panel {
+  margin: 0 20rpx;
+  font-size: 26rpx;
+}
+
+/* left_tabbar结束 */
+
+.template{
+	display: flex;
+  width: 100%;
+	flex-direction: column;
+}
+.item{
+  display: flex;
+  flex-direction: row;
+  height: 230rpx;
+}
+.space{
+  width: 100%;
+  height: 6px;
+  background-color: #E0E0DF;
+}
+.template .image{
+  height: 170rpx;
+  width: 170rpx;
+  margin-top: 20rpx;
+  margin-left: -10rpx;
+}
+.template .productImg{
+  width: 30%;
+}
+.productInfo{
+  width: 70%;
+  padding-top: 20rpx;
+  padding-bottom: 10rpx;
+}
+.productInfo .productTitle{
+margin-right: 20rpx;
+height: 120rpx;
+font-size: 28rpx;
+text-overflow: -o-ellips0is-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+.price{
+  display: flex;
+  flex-direction: row;
+}
+.productInfo .productPrice{
+font-size: 35rpx;
+color: red;
+}
+.productInfo .productOldPrice{
+  text-decoration:line-through;
+  margin-top: 10rpx;
+  font-size: 25rpx;
+  color: #9C9C9C;
+}

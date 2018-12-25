@@ -1,0 +1,140 @@
+<view>
+<!-- 搜索条开始 -->
+  <view class='search_row'>
+    <view class="search">
+    <view class='contain' bindtap='search_page'>
+      <icon class="searchicon" size='17' type='search'></icon>
+        <text class='search_input'>请输入关键字</text>
+    </view>
+    </view>
+  </view>
+  <!-- 搜索条结束 -->
+<view class="bar_container">
+  <view class="left_tabbar">
+    <scroll-view scroll-y="true" style="height:{{deviceHeight}}px;" class="left_tabbar_list">
+      <view bindtap="changeTab" data-index="{{index}}" data-name="{{item.tabName}}" class="left_tabbar_item {{activeIndex==index?'active':''}}" wx:for="{{tabs}}">{{item.tabName}}</view>
+    </scroll-view>
+  </view>
+  <view class="right_content">
+    <scroll-view bindscrolltolower="getMore" scroll-y="true" scroll-top="{{scrolltop}}" style="height:{{deviceHeight}}px;" class="tab_panel">
+      <view>
+      <!-- 热搜推荐 -->
+      <view class='resoutuijian' wx:if="{{activeIndex==0}}">
+    <view class="template" wx:for="{{resoutuijian}}" wx:key="{{item.bookid}}" >  
+      <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
+      <view class="productImg">
+        <image class='image' src="{{item.book_url}}" mode='aspectFit'></image>
+      </view>
+      <view class="productInfo">
+        <view class="productTitle">{{item.bookname}}（{{item.press}},{{item.author}},{{item.publication_date}}）</view>
+        <view class='price'>
+        <text class="productPrice">￥{{item.discountprice}}</text>
+        <text class="productOldPrice">￥{{item.pricing}}</text>
+        </view>
+      </view>
+      </view>
+      <view class='space'></view>
+  </view>
+  </view>
+<!-- 热搜推荐结束 -->
+<!-- 精品好书 -->
+      <view class='jingpinhaoshu' wx:if="{{activeIndex==1}}">
+    <view class="template" wx:for="{{jingpinhaoshu}}" wx:key="{{item.bookid}}"> 
+      <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
+      <view class="productImg">
+        <image class='image' src="{{item.book_url}}" mode='aspectFit'></image>
+      </view>
+      <view class="productInfo">
+        <view class="productTitle">{{item.bookname}}（{{item.press}},{{item.author}},{{item.publication_date}}）</view>
+        <view class='price'>
+        <text class="productPrice">￥{{item.discountprice}}</text>
+        <text class="productOldPrice">￥{{item.pricing}}</text>
+        </view>
+      </view>
+      </view>
+      <view class='space'></view>
+  </view>
+  </view>
+<!-- 精品好书结束 -->
+<!-- 新书热卖 -->
+      <view class='xinshuremai' wx:if="{{activeIndex==2}}">
+    <view class="template" wx:for="{{xinshuremai}}" wx:key="{{item.bookid}}">  
+      <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
+      <view class="productImg">
+        <image class='image' src="{{item.book_url}}" mode='aspectFit'></image>
+      </view>
+      <view class="productInfo">
+        <view class="productTitle">{{item.bookname}}（{{item.press}},{{item.author}},{{item.publication_date}}）</view>
+        <view class='price'>
+        <text class="productPrice">￥{{item.discountprice}}</text>
+        <text class="productOldPrice">￥{{item.pricing}}</text>
+        </view>
+      </view>
+      </view>
+      <view class='space'></view>
+  </view>
+  </view>
+<!-- 新书热卖结束 -->
+<!-- 即刻秒杀 -->
+      <view class='jikemiaosha' wx:if="{{activeIndex==3}}">
+   <view class="template" wx:for="{{jikemiaosha}}" wx:key="{{item.bookid}}">  
+      <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
+      <view class="productImg">
+        <image class='image' src="{{item.book_url}}" mode='aspectFit'></image>
+      </view>
+      <view class="productInfo">
+        <view class="productTitle">{{item.bookname}}（{{item.press}},{{item.author}},{{item.publication_date}}）</view>
+        <view class='price'>
+        <text class="productPrice">￥{{item.discountprice}}</text>
+        <text class="productOldPrice">￥{{item.pricing}}</text>
+        </view>
+      </view>
+      </view>
+      <view class='space'></view>
+  </view>
+  </view>
+<!-- 即刻秒杀结束 -->
+<!-- 二手旧书 -->
+      <view class='ershoujiushu' wx:if="{{activeIndex==4}}">
+    <view class="template" wx:for="{{ershoujiushu}}" wx:key="{{item.bookid}}">  
+      <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
+      <view class="productImg">
+        <image class='image' src="{{item.book_url}}" mode='aspectFit'></image>
+      </view>
+      <view class="productInfo">
+        <view class="productTitle">{{item.bookname}}（{{item.press}},{{item.author}},{{item.publication_date}}）</view>
+        <view class='price'>
+        <text class="productPrice">￥{{item.discountprice}}</text>
+        <text class="productOldPrice">￥{{item.pricing}}</text>
+        </view>
+      </view>
+      </view>
+      <view class='space'></view>
+  </view>
+  </view>
+<!-- 二手旧书结束 -->
+<!-- 二手杂货 -->
+      <view class='ershouzahuo' wx:if="{{activeIndex==5}}">
+    <view class="template" wx:for="{{ershouzahuo}}" wx:key="{{item.bookid}}">  
+      <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
+      <view class="productImg">
+        <image class='image' src="{{item.book_url}}" mode='aspectFit'></image>
+      </view>
+      <view class="productInfo">
+        <view class="productTitle">{{item.bookname}}（{{item.press}},{{item.author}},{{item.publication_date}}）</view>
+        <view class='price'>
+        <text class="productPrice">￥{{item.discountprice}}</text>
+        <text class="productOldPrice">￥{{item.pricing}}</text>
+        </view>
+      </view>
+      </view>
+      <view class='space'></view>
+  </view>
+  </view>
+<!-- 二手杂货结束 -->
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- left_bar结束 -->
+</view>

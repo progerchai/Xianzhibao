@@ -1,0 +1,23 @@
+<view class="address-view">
+    <block wx:for="{{addressList}}" wx:for-item="address" wx:key="{{address_id}}" data-index="{{index}}">
+        <view class="address-item">
+            <view class="select-view">
+                <image src="../../../images/check.png"></image>
+            </view>
+            <view class="content-view">
+                <view class="top">
+                    <text class="name">{{addresslist[0+index*6]}}</text>
+                    <text class="phone">{{addresslist[1+index*6]}}</text>
+                </view>
+                <text class="address">{{addresslist[2+index*6]}}{{addresslist[3+index*6]}}{{addresslist[4+index*6]}}{{addresslist[5+index*6]}}</text>
+            </view>
+            <view class="edit-view">
+                <image src="../../../images/check_HL.png"></image>
+            </view>
+        </view>
+    </block>
+</view>
+
+<view class='add_btn' bindtap='add_btn'>
+      <image class="add_icon" src="../../../images/add.png"></image>
+</view>

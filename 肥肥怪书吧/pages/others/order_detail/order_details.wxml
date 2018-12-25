@@ -1,0 +1,105 @@
+<view class='all'>
+<image class='orderseccess' src='/images/orderseccess.png'></image>
+<view class='address'>
+  <view class='icon'>
+    <text class='iconfont icon-dizhi'></text>
+  </view>
+  <view class='addressdetail'>
+    <view class='name_phone'>
+      <text>柴倩超</text>
+      <text>15868725950</text>   
+    </view>
+    <view class='detail'>浙江省-温州市-瓯海区-温州大学超豪学区 e5-601</view>
+  </view>
+</view>
+
+<view class='goodslist'>
+  <view class='title'>
+  <text class='iconfont icon-quanbudingdan'></text>
+  <text>肥肥怪书吧</text>
+  </view>
+  <view class='list'>
+    <view class='img'>
+      <image src='{{itemdetail.book_url}}'></image>
+    </view>
+    <view class='content'>
+    <view class='text1'>{{itemdetail.bookname}},{{itemdetail.press}},{{itemdetail.author}},{{itemdetail.publication_date}},{{itemdetail.information}}</view>
+    <view class='text2'>
+      <text>￥{{itemdetail.discountprice}}</text>
+      <text>×{{itemdata.amount}}</text>
+    </view>
+    </view>
+  </view>
+  <!-- 分割线 -->
+<view class="divLine"></view>
+  <!-- 结算栏目 -->
+  <view class='balance'>
+
+    <view class='left'>
+      <text>运费</text>
+      <text>实付款（含运费）</text>
+    </view>
+
+    <view class='right'>
+      <text>￥0.00</text>
+      <text>￥{{itemdata.amount*itemdetail.discountprice}}</text>
+    </view>
+
+  </view>
+</view>
+
+
+<view class='ordermsg'>
+  <view class='title'>
+    <text class='iconfont icon-imp' style='color:#FF3800;'></text>
+    <text>订单信息</text>
+  </view>
+
+<view class='contents'>
+  <view class='left'>
+    <text>订单备注：</text>
+    <text>订单编号：</text>
+    <!-- 未付款也有订单编号 -->
+    <text wx:if="{{itemdata.status!=4}}">交易号：</text>
+    <text wx:if="{{itemdata.status!=4}}">付款时间：</text>
+    <text wx:if="{{itemdata.status==5}}">成交时间：</text>
+  </view>
+
+    <view class='right'>
+    <text>{{comments.comment}}</text>
+    <text>{{itemdata.orderid}}</text>
+    <text wx:if="{{itemdata.status!=4}}">20184242678395</text>
+    <text wx:if="{{itemdata.status!=4}}">{{itemdata.ordertime}}</text>
+    <text wx:if="{{itemdata.status==5}}">2018-11-24 22：49:37</text>
+  </view>
+</view>
+
+
+<!-- 状态 已完成 -->
+<view wx:if="{{itemdata.status==5}}" style='display: flex;flex-direction: column;align-items: center;'>
+  <view wx:if="{{iscomments}}">
+    填写评论:
+    <input type="text" class="input_comment" placeholder="请输入评论" bindinput="inputTyping"/>
+    <button class='submit' bindtap='submit'>提交评论</button>
+  </view>
+  <text >^_^</text>
+</view>
+<!-- 状态 待收货 -->
+<view wx:if="{{itemdata.status==2}}">
+  <button bindtap='changestatus'>确认收货</button>
+</view>
+<!-- 状态 待发货 -->
+<view wx:if="{{itemdata.status==1}}">
+  亲别着急哦，我们正在加班加点给亲爱安排发货^_^
+</view>
+<!-- 状态 待付款 -->
+<view wx:if="{{itemdata.status==4}}">
+  <button bindtap='changestatus'>结算订单</button>
+</view>
+<!-- 状态 退款中 -->
+<view wx:if="{{itemdata.status==3}}">
+  商品正在退款
+</view>
+
+</view> 
+</view>

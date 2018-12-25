@@ -1,0 +1,31 @@
+/* pages/search_page/search_page.wxss */
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.cell{
+    padding: 12px 15px 12px 35px;
+}
+.icon-search_in-box{
+  margin-top: 6rpx;
+    display: flex;
+  align-items: center;
+}
+.search_bar_line{
+ display: flex;
+justify-content: center;
+flex-direction: row;
+
+}
+.search-bar__box{
+    margin-top: 10rpx;
+  border: 1px solid #000000;
+  border-radius: 25rpx;
+  width: 80%;
+  display: flex;
+justify-content: center;
+flex-direction: row;
+}

@@ -1,0 +1,16 @@
+ <template name="right_template" class="orderListDetails">  
+      <view class="productImg">
+        <image class='image' src="{{item.pic}}" mode='aspectFit'></image>
+      </view>
+      <view class="productInfo">
+        <view class="productTitle">{{item.name}}（{{item.bookconcern}}）</view>
+        <view class='price'>
+        <text class="productPrice">￥{{item.price}}</text>
+        <text class="productOldPrice">￥{{item.oldprice}}</text>
+        </view>
+            <view class='status'>
+            <text>现在有货</text>
+            </view>
+      </view>
+      <view class='space'></view>
+  </template>
