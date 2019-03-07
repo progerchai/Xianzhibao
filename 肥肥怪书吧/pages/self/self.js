@@ -87,6 +87,14 @@ Page({
       complete: function (res) { },
     })
   },
+  selfsell: function () {
+    wx.navigateTo({
+      url: '../others/selfsell/selfsell',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
   mycollections: function () {
     wx.navigateTo({
       url: '../others/mycollections/mycollections',
@@ -126,7 +134,7 @@ Page({
     return {
       title: "肥肥怪书吧",
       path: '/pages/index/index',
-      imageUrl: "http://139.199.0.182/BookStoreProject/public/index.png",
+      imageUrl: "https://www.ffgbookbar.cn/BookStoreProject/public/index.png",
       success: (res) => {
         console.log("转发成功", res);
       },

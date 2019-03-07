@@ -129,13 +129,13 @@ var app = getApp();
     submit:function(){
       var that = this;
       wx.request({
-        url: 'http://139.199.0.182/BookStoreProject/public/store.php/changeAddress',
+        url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/changeAddress',
         data: { openid: getApp().globalData.openid, address:getApp().globalData.usermes.address+'-'+ that.data.consignee_name + '-' + that.data.phone_number+'-'+that.data.province+'-'+that.data.city+'-'+that.data.area+'-'+that.data.addressDetails},
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         header: { "content-type": "application/json" }, // 设置请求的 header
         success: function (res) {
           wx.request({
-            url: 'http://139.199.0.182/BookStoreProject/public/store.php/getInformation',
+            url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
             data: { isUser: 1, openid: app.globalData.openid},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: { "content-type": "application/json" }, // 设置请求的 header

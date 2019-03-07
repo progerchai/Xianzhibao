@@ -63,7 +63,7 @@ Page({
     for (var i = 0; i < len ;i++)
     {
       wx.request({
-        url: 'http://139.199.0.182/BookStoreProject/public/store.php/submitOrder',
+        url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/submitOrder',
         data: { bookid: mylist[i].bookid, openid: app.globalData.openid, amount: acountlist[i],note:"备注",address:that.data.usermes.address,phone_number:that.data.phone_number},
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         header: { "content-type": "application/json" }, // 设置请求的 header

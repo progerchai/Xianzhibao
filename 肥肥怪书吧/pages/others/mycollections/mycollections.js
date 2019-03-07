@@ -10,7 +10,7 @@ Page({
     var that = this;
     //获取收藏数据
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/showCollect',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showCollect',
       data: { openid:getApp().globalData.openid},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -20,7 +20,7 @@ Page({
         });
         for (var i = 0; i < res.data.length; i++) {
           wx.request({
-            url: 'http://139.199.0.182/BookStoreProject/public/store.php/getInformation',
+            url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
             data: { isUser: 0, bookid: res.data[i].bookid },
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: { "content-type": "application/json" }, // 设置请求的 header
@@ -70,7 +70,7 @@ Page({
   onConfirm: function () {
     var that = this;
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/deleteCollect',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/deleteCollect',
       data: {openid:getApp().globalData.openid,bookid:this.data.deletebookid},
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header

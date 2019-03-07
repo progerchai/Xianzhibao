@@ -26,7 +26,7 @@ Page({
     });
     //热搜推荐前三个数据抓取
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/showBooks',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 1 },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -38,7 +38,7 @@ Page({
     });
     //精品好书前三个数据抓取
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/showBooks',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 2 },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -50,7 +50,7 @@ Page({
     });
     //新书热卖前三个数据抓取
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/showBooks',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 3 },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -62,7 +62,7 @@ Page({
     });
     //即刻秒杀前三个数据抓取
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/showBooks',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 4 },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -74,7 +74,7 @@ Page({
     });
     //二手旧书前三个数据抓取
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/showBooks',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 5 },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -86,7 +86,7 @@ Page({
     });
     //二手杂货前三个数据抓取
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/showBooks',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 5 },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -129,7 +129,7 @@ Page({
     return {
       title: "肥肥怪书吧",
       path: '/pages/index/index',
-      imageUrl: "http://139.199.0.182/BookStoreProject/public/index.png",
+      imageUrl: "https://www.ffgbookbar.cn/BookStoreProject/public/index.png",
       success: (res) => {
         console.log("转发成功", res);
       },

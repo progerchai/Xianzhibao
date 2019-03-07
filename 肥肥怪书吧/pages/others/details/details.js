@@ -17,7 +17,7 @@ Page({
   onLoad:function(options){
     var that = this;
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/getInformation',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
       data: { isUser : 0 , bookid : options.bookid},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -45,7 +45,7 @@ Page({
 
 // 获取评论
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/showComment',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showComment',
       data: { isUser: 0, openid: getApp().globalData.openid, bookid: options.bookid },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -63,7 +63,7 @@ Page({
     {
       //添加收藏
       wx.request({
-        url: 'http://139.199.0.182/BookStoreProject/public/store.php/addCollect',
+        url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/addCollect',
         data: {openid:getApp().globalData.openid,bookid:this.data.bookmsg.bookid},
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         header: { "content-type": "application/json" }, // 设置请求的 header
@@ -80,7 +80,7 @@ Page({
     else{
       //添加收藏
       wx.request({
-        url: 'http://139.199.0.182/BookStoreProject/public/store.php/deleteCollect',
+        url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/deleteCollect',
         data: { openid: getApp().globalData.openid, bookid: this.data.bookmsg.bookid },
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         header: { "content-type": "application/json" }, // 设置请求的 header
@@ -141,7 +141,7 @@ Page({
   },
   addCar: function () {
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/addShoppingcar',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/addShoppingcar',
       data: { openid:getApp().globalData.openid, bookid: this.data.bookmsg.bookid},
       method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header

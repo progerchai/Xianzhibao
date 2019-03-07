@@ -15,7 +15,8 @@
     "pages/others/mycards/mycards",
     "pages/others/myoptions/myoptions",
     "pages/others/order_detail/order_details",
-    "pages/others/balance/balance"
+    "pages/others/balance/balance",
+    "pages/others/selfsell/selfsell"
   ],
   "window": {
     "backgroundTextStyle": "light",

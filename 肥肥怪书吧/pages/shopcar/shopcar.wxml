@@ -1,17 +1,17 @@
-<!--pages/shopcar/shopcar.wxml-->
+<!--pages/shopcar/shopcar.wxml--> 
 <view class='shopcar_contain' hidden='{{emptyjudge}}'>
 <scroll-view class="scroll" scroll-y="true">
   <view class="separate"></view>
-  <view wx:for="{{carts}}" bindtap='todetail' data-index="{{index}}">
+  <view wx:for="{{carts}}" data-index="{{index}}">
     <view class="touch-item {{istouchmove[index].isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
-      <view class="cart_container">
+      <view class="cart_container" bindtap='todetail' >
         <image class="item-select" bindtap="switchSelect" data-index="{{index}}" src="{{isSelect[index].ischecked?'../../images/check_HL.png':'../../images/check.png'}}" />
 
         <image class="item-image" src="{{item.book_url}}"></image>
           <!-- column中间列表 -->
         <view class="column">   
           <text class="title">{{item.bookname}}</text>
-          <view class="row"> 
+          <view class="row">
             <text class="sku-price">￥</text>
             <text class="sku-price">{{item.discountprice}}</text>
           </view>  

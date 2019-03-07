@@ -28,7 +28,7 @@ Page(Object.assign({}, Temp.Quantity, {
       booklist: null,
     });
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/showShoppingCar',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showShoppingCar',
       data: { openid: getApp().globalData.openid },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -37,8 +37,10 @@ Page(Object.assign({}, Temp.Quantity, {
           booklist: res.data,
         });
         for (var i = 0; i < res.data.length; i++) {
+          //先添加所有购物车商品数量为1
+          // (that.data.booklist).push({number : 1});
           wx.request({
-            url: 'http://139.199.0.182/BookStoreProject/public/store.php/getInformation',
+            url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
             data: { isUser: 0, bookid: res.data[i].bookid },
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             header: { "content-type": "application/json" }, // 设置请求的 header
@@ -182,7 +184,7 @@ var acountlist=[];
       carts: this.data.carts,
       totalMoney: parseFloat(parseFloat(this.data.totalMoney).toFixed(2)),
     });
-  },
+  }, 
   addCount:function(e){
     console.log(e.target.dataset.index);
     var componentId = e.target.dataset.index;
@@ -214,7 +216,7 @@ var acountlist=[];
     var that = this;
     var componentId = this.data.index;
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/deleteShoppingcar',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/deleteShoppingcar',
       data: {openid:getApp().globalData.openid,bookid:this.data.carts[componentId].bookid},
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -243,7 +245,7 @@ var acountlist=[];
     return {
       title: "肥肥怪书吧",
       path: '/pages/index/index',
-      imageUrl: "http://139.199.0.182/BookStoreProject/public/index.png",
+      imageUrl: "https://www.ffgbookbar.cn/BookStoreProject/public/index.png",
       success: (res) => {
         console.log("转发成功", res);
       },

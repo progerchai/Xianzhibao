@@ -10,7 +10,7 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: 'http://139.199.0.182/BookStoreProject/public/store.php/getOpenid',
+          url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getOpenid',
           data: {code:res.code},
           method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
           header: { "content-type": "application/json" }, // 设置请求的 header
@@ -19,7 +19,7 @@ App({
             getApp().globalData.openid=openid;
             //判断是否第一次注册
             wx.request({
-              url: 'http://139.199.0.182/BookStoreProject/public/store.php/getInformation',
+              url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
               data: { isUser: 1, openid: openid },
               method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
               header: { "content-type": "application/json" }, // 设置请求的 header
@@ -32,7 +32,7 @@ App({
                 else{
                   //进行注册操作
                   wx.request({
-                    url: 'http://139.199.0.182/BookStoreProject/public/store.php/register',
+                    url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/register',
                     data: { openid: openid, nickname: getApp().globalData.userInfo.nickName, headportrait_url:getApp().globalData.userInfo.avatarUrl},
                     method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
                     header: { "content-type": "application/json" }, // 设置请求的 header

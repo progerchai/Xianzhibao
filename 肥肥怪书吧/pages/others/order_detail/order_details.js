@@ -12,7 +12,7 @@ Page({
     });
   var itemdetail=null;
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/getInformation',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
       data: { isUser: 0, bookid:this.data.itemdata.bookid },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -25,7 +25,7 @@ Page({
 
 
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/showComment',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showComment',
       data: { isUser: 0, openid: getApp().globalData.openid, bookid: this.data.itemdata.bookid },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
@@ -44,7 +44,7 @@ Page({
     if (this.data.itemdata.status==2)
     {
       wx.request({
-        url: 'http://139.199.0.182/BookStoreProject/public/store.php/changeOrderState',
+        url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/changeOrderState',
         data: { orderid: this.data.itemdata.orderid, status: this.data.itemdata.status },
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         header: { "content-type": "application/json" }, // 设置请求的 header
@@ -71,7 +71,7 @@ console.log("应该运行这里");
     //////////完善支付功能
 
       wx.request({
-        url: 'http://139.199.0.182/BookStoreProject/public/store.php/changeOrderState',
+        url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/changeOrderState',
         data: { orderid: this.data.itemdata.orderid, status: this.data.itemdata.status },
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         header: { "content-type": "application/json" }, // 设置请求的 header
@@ -116,7 +116,7 @@ console.log("应该运行这里");
   submit:function(){
     var that = this;
     wx.request({
-      url: 'http://139.199.0.182/BookStoreProject/public/store.php/addComment',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/addComment',
       data: { bookid: this.data.itemdata.bookid,evaluate:5, comment:this.data.comments, openid: getApp().globalData.openid},
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
