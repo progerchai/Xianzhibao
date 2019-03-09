@@ -38,7 +38,7 @@ Page(Object.assign({}, Temp.Quantity, {
         });
         for (var i = 0; i < res.data.length; i++) {
           //先添加所有购物车商品数量为1
-          // (that.data.booklist).push({number : 1});
+          // (that.data.booklist).push({boughtnumber : 1});
           wx.request({
             url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
             data: { isUser: 0, bookid: res.data[i].bookid },
@@ -90,10 +90,10 @@ Page(Object.assign({}, Temp.Quantity, {
     this.data.isSelect[index].ischecked = !this.data.isSelect[index].ischecked;
     //价钱统计
     if (this.data.isSelect[index].ischecked) {
-      this.data.totalMoney = this.data.totalMoney + this.data.carts[index].discountprice * this.data.booklist[index].number;
+      this.data.totalMoney = this.data.totalMoney + this.data.carts[index].discountprice * this.data.booklist[index].boughtnumber;
     }
     else {
-      this.data.totalMoney = this.data.totalMoney - this.data.carts[index].discountprice * this.data.booklist[index].number;
+      this.data.totalMoney = this.data.totalMoney - this.data.carts[index].discountprice * this.data.booklist[index].boughtnumber;
     }
     //是否全选判断
     for (i = 0; i < this.data.carts.length; i++) {
@@ -120,7 +120,7 @@ Page(Object.assign({}, Temp.Quantity, {
       this.data.totalMoney=0;
       for (i = 0; i < this.data.carts.length; i++) {
         this.data.isSelect[i].ischecked = true;
-        this.data.totalMoney = this.data.totalMoney + this.data.carts[i].discountprice * this.data.booklist[i].number;
+        this.data.totalMoney = this.data.totalMoney + this.data.carts[i].discountprice * this.data.booklist[i].boughtnumber;
       }   
     }
     else {
@@ -147,7 +147,7 @@ var acountlist=[];
     {
       if(this.data.isSelect[i].ischecked==true)
       {
-        acountlist.push(this.data.booklist[i].number);
+        acountlist.push(this.data.booklist[i].boughtnumber);
         booklist.push(this.data.carts[i]);
       }
     }
@@ -172,9 +172,9 @@ var acountlist=[];
   },
   decreaseCount:function(e){
     var componentId = e.target.dataset.index;
-    if (this.data.booklist[componentId].number>1)
+    if (this.data.booklist[componentId].boughtnumber>1)
     {
-      this.data.booklist[componentId].number = this.data.booklist[componentId].number - 1;
+      this.data.booklist[componentId].boughtnumber = this.data.booklist[componentId].boughtnumber - 1;
       if (this.data.isSelect[componentId].ischecked) {
         this.data.totalMoney = this.data.totalMoney - parseFloat(this.data.carts[componentId].discountprice);
       }
@@ -188,7 +188,7 @@ var acountlist=[];
   addCount:function(e){
     console.log(e.target.dataset.index);
     var componentId = e.target.dataset.index;
-    this.data.booklist[componentId].number = this.data.booklist[componentId].number + 1;
+    this.data.booklist[componentId].boughtnumber = this.data.booklist[componentId].boughtnumber + 1;
 
     if (this.data.isSelect[componentId].ischecked) {
       this.data.totalMoney =this.data.totalMoney + parseFloat(this.data.carts[componentId].discountprice);

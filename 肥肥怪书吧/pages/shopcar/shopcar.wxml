@@ -23,7 +23,7 @@
           <!-- 数值改变开始 -->
           <view class='quantity'>
               <image class='minus_icon' data-index='{{index}}' src='/images/minusnumber.png' catchtap='decreaseCount'></image>
-              <text class='shop_num'>{{booklist[index].number}}</text>
+              <text class='shop_num'>{{booklist[index].boughtnumber}}</text>
               <image class='add_icon' data-index='{{index}}' src='/images/addnumber.png' catchtap='addCount'></image>
           </view>
           

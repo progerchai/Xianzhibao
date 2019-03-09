@@ -89,7 +89,9 @@
 
       <!--商品属性列表-->
       <view class="shuxingdetails">
-      <view class='context'>
+
+      <!-- 书目类，与其他类目商品区分开，详细参数模板 ,其他类目商品模板待添加-->
+      <view class='context'  wx:if="{{bookmsg.type==1||bookmsg.type==2}}">
             <text>产品参数</text>
             <view class="divLine"></view>
             <view class='list'>

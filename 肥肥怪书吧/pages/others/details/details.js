@@ -142,7 +142,7 @@ Page({
   addCar: function () {
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/addShoppingcar',
-      data: { openid:getApp().globalData.openid, bookid: this.data.bookmsg.bookid},
+      data: { openid: getApp().globalData.openid, bookid: this.data.bookmsg.bookid, boughtnumber: this.data.boughtnumber},
       method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
       success: function (res) {
