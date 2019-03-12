@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -101,7 +101,13 @@
 				{
 					"id": -1,
 					"name": "订单详情",
-					"pathName": "pages/others/order_detail/order_details"
+					"pathName": "pages/others/order_detail/order_details",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人出售",
+					"pathName": "pages/others/selfsell/selfsell"
 				}
 			]
 		}

@@ -36,39 +36,29 @@ Page(Object.assign({}, Temp.Quantity, {
         that.setData({
           booklist: res.data,
         });
-        for (var i = 0; i < res.data.length; i++) {
-          //先添加所有购物车商品数量为1
-          // (that.data.booklist).push({boughtnumber : 1});
-          wx.request({
-            url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
-            data: { isUser: 0, bookid: res.data[i].bookid },
-            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-            header: { "content-type": "application/json" }, // 设置请求的 header
-            success: function (e) {
-              console.log(e.data);
-
-              that.data.carts.push(e.data[0]);
-              that.data.isSelect.push({ ischecked: false });
-              that.data.istouchmove.push({ isTouchMove:false});
-              that.setData({
-                carts: that.data.carts,
-                isSlect: that.data.isSelect
-              });
-
-              // for (var i = 0; i < this.data.carts.length; i++) {
-              //   this.data.carts[i].push({
-              //     isTouchMove: false //默认隐藏删除
-              //   })
-              // }
- 
-
-            }
-          });
+        var bookidlist = ''+res.data[0].bookid;
+        for (let i = 1; i < res.data.length; i++) {
+         bookidlist= bookidlist+","+res.data[i].bookid
         }
+        wx.request({
+          url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
+          data: { isUser: 0, bookid: bookidlist },
+          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: { "content-type": "application/json" }, // 设置请求的 header
+          success: function (e) {
+            
+            that.data.isSelect.push({ ischecked: false });
+            that.data.istouchmove.push({ isTouchMove: false });
+            that.setData({
+              carts: e.data,
+              isSlect: that.data.isSelect
+            });
 
-
+          }
+        });
       }
     });
+    
   },
   onShow(){
     var that = this;  
@@ -200,17 +190,19 @@ var acountlist=[];
     });
   },
   todetail:function(e){
-
-    var index = e.currentTarget.dataset.index;
+    var index = this.data.index;
     var bookid = this.data.carts[index].bookid;
+ 
     wx.navigateTo({
-      url: '/pages/others/details/details?bookid='+bookid,
-      success: function(res) {
+      url: '/pages/others/details/details?bookid=' + bookid,
+      success: function (res) {
         console.log("详细跳转成功");
       },
-      fail: function(res) {},
-      complete: function(res) {},
+      fail: function (res) { },
+      complete: function (res) { },
     })
+  
+    
   },
   into_garbage:function(){
     var that = this;
@@ -243,7 +235,7 @@ var acountlist=[];
       console.log("来自右上角转发菜单")
     }
     return {
-      title: "肥肥怪书吧",
+      title: "肥肥怪二手",
       path: '/pages/index/index',
       imageUrl: "https://www.ffgbookbar.cn/BookStoreProject/public/index.png",
       success: (res) => {
