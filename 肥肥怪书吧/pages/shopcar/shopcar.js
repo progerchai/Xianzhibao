@@ -152,7 +152,6 @@ var acountlist=[];
     }
     var acount = JSON.stringify(acountlist);
     var model = JSON.stringify(booklist);
-    console.log("ggggggggggggg");
     console.log(acount);
     console.log(model);
     console.log("ggggggggggggg");
