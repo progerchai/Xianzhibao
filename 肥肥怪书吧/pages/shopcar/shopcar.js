@@ -40,6 +40,7 @@ Page(Object.assign({}, Temp.Quantity, {
         for (let i = 1; i < res.data.length; i++) {
          bookidlist= bookidlist+","+res.data[i].bookid
         }
+        
         wx.request({
           url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
           data: { isUser: 0, bookid: bookidlist },
@@ -47,13 +48,16 @@ Page(Object.assign({}, Temp.Quantity, {
           header: { "content-type": "application/json" }, // 设置请求的 header
           success: function (e) {
             
-            that.data.isSelect.push({ ischecked: false });
+            
             that.data.istouchmove.push({ isTouchMove: false });
+            for (let i = 0;i <e.data.length;i++)
+            {
+              that.data.isSelect.push({ ischecked: false });
+            }
             that.setData({
               carts: e.data,
               isSlect: that.data.isSelect
             });
-
           }
         });
       }

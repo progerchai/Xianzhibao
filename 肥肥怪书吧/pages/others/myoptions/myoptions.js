@@ -73,6 +73,7 @@ Page({
                 isSrc: true,
                 src: tempFilePaths
               })
+              console.log(that.data.src);
             }
           })
         }

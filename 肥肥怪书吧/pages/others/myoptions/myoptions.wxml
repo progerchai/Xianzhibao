@@ -12,7 +12,7 @@
       </view>
 
       <block>
-        <text class="issues-label">选择图片（可选）</text>
+        <text class="issues-label">选择图片（数量限制一张，非必填选项）</text>
         <view class="issues-img-panel">
           <view class="issues-photo-item add-photo" bindtap="uploadPic" wx:if="{{!isSrc}}"></view>
           <view wx:if="{{isSrc}}" class="image_box">
