@@ -8,10 +8,10 @@ Page({
         tabName: '热搜推荐'
       }, {
         id: 2,
-        tabName: '精品好书'
+        tabName: '精品好物'
       }, {
         id: 3,
-        tabName: '新书热卖'
+        tabName: '新品热卖'
       }, {
         id: 4,
         tabName: '即刻秒杀'

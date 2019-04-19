@@ -21,7 +21,6 @@
       <text class='iconfont icon-daifukuan' decode="{{true}}">&nbsp;&nbsp;</text>
       <text  class='text'>待付款</text>
       <view class='right'><text class='iconfont icon-youjiantou'></text></view>
-      
     </view>
     <view class="divLine"></view>
     <view class='waitsend_list' bindtap='waitsend_list'>

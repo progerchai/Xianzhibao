@@ -21,8 +21,8 @@ Page({
     this.setData({
       msgList: [
         { url: "url", title: "公告：欢迎来到肥肥怪的书吧" },
-        { url: "url", title: "公告：这是测试公告内容1" },
-        { url: "url", title: "公告：这是测试公告内容2" }]
+        { url: "url", title: "公告：新优惠推出哦，点我查看！" },
+        { url: "url", title: "公告：夏日炎炎" }]
     });
     //热搜推荐前三个数据抓取
     wx.request({

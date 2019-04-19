@@ -56,8 +56,10 @@ Page({
       mask: true,
       success: function(res) {},
       fail: function(res) {},
-      complete: function(res) {},
+      complete: function(res) {
+      },
     })
+   
 //调用jsapi支付接口
 //成功回调
     for (var i = 0; i < len ;i++)
@@ -69,9 +71,24 @@ Page({
         header: { "content-type": "application/json" }, // 设置请求的 header
         success: function (res) {
           console.log("支付结束，成功了！");
+          var timeOut = setTimeout(function () {
+            console.log("延迟调用============")
+            wx.switchTab({
+              url: '/pages/index/index',
+              success: function (res) {
+                console.log("跳转成功了！");
+              },
+              fail: function (res) {
+                console.log("跳转失败了");
+              },
+              complete: function (res) { },
+            })
+          }, 2000)
+          setTimeout();
         }
       });
-    }    
+    }  
+   
 //失败回调
 console.log("如果支付失败，修改订单为待付款");
   },

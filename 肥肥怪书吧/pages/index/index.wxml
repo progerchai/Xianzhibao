@@ -44,7 +44,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.information}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
@@ -65,7 +65,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.information}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
@@ -75,7 +75,7 @@
 
     <view class='list xinshuremai'>
       <view class='content_text'>
-      <text class='title'>新书热卖</text>
+      <text class='title'>新品热卖</text>
       <text class='turntodetail' bindtap='xinshuremai'>查看更多 ></text>
       </view>
       <view class='content_list'>
@@ -85,7 +85,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.information}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
@@ -105,7 +105,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.information}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
@@ -119,7 +119,7 @@
 
       <view class='list ershoujiushu'>
         <view class='content_text'> 
-        <text class='title'>热搜推荐</text>
+        <text class='title'>二手旧书</text>
         <!-- 设置bind函数实现跳转 -->
         <text class='turntodetail' bindtap='ershoujiushu'>查看更多 ></text>
         </view>
@@ -130,7 +130,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.information}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
@@ -139,7 +139,7 @@
       </view>
     <view class='list ershouzahuo'>
         <view class='content_text'> 
-        <text class='title'>热搜推荐</text>
+        <text class='title'>二手杂货</text>
         <!-- 设置bind函数实现跳转 -->
         <text class='turntodetail' bindtap='ershouzahuo'>查看更多 ></text>
         </view>
@@ -150,7 +150,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.bookname}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.information}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>

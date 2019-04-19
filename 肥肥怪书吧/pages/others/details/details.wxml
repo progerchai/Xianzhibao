@@ -6,8 +6,8 @@
   </block> 
 </swiper>
 <scroll-view scroll-y="true">
-  <view class="detail">
-    <text class="title">{{bookmsg.bookname}}</text>
+  <view class="detail" wx:if="{{bookmsg.type==1||bookmsg.type==2}}">
+    <text class="title">{{bookmsg.name}}</text>
     <text class="about">作者：{{bookmsg.author}},出版社：{{bookmsg.press}}，出版日期：{{bookmsg.publication_date}}</text>
     <view class='share'>
     <text class="price" decode="{{true}}">&nbsp;&nbsp;￥{{bookmsg.discountprice}}</text>
@@ -23,8 +23,16 @@
       <text class='iconfont icon-aixin' style='color:#E70510;'></text>
       <view class='sharetext'><text>收藏</text></view>
       </button>
+      <button class='shareicon' style='flex-direction: column;' bindtap='show3d' wx:if="{{bookmsg.show3d==1}}">
+      <text class='iconfont icon-fenxiang'></text>
+      <view class='sharetext'><text>3D</text></view>
+      </button>
     <!-- 分享iconfont -->
     </view>
+  </view>
+  <!-- 存放非书目物品introduce -->
+  <view class="detail" wx:else>
+  <view>{{bookmsg.introduce}}</view>
   </view>
   <view class="separate"></view>
   <!-- sku选择 -->
@@ -65,7 +73,7 @@
   <view class="line_nav"></view>
   <image bindtap="toCar" src="../../../images/shopcar.png" />
   <button class="button-green" bindtap="addCar" formType="submit">加入购物车</button>
-  <button class="button-red" bindtap="immeBuy" formType="submit">立即购买</button>
+  <button class="button-red" bindtap="immeBuy" formType="submit">立即沟通</button>
 </view>
 
 <!-- 抽屉层开始 -->
@@ -90,13 +98,13 @@
       <!--商品属性列表-->
       <view class="shuxingdetails">
 
-      <!-- 书目类，与其他类目商品区分开，详细参数模板 ,其他类目商品模板待添加-->
+      <!-- 书目类，与其他类目商品区分开，详细参数模板 -->
       <view class='context'  wx:if="{{bookmsg.type==1||bookmsg.type==2}}">
             <text>产品参数</text>
             <view class="divLine"></view>
             <view class='list'>
               <view class='listname'>书名</view>
-              <view class='detail_content'>{{bookmsg.bookname}}</view>
+              <view class='detail_content'>{{bookmsg.name}}</view>
             </view>
             <view class="divLine"></view>
             <view class='list'>
@@ -124,9 +132,12 @@
               <view class='detail_content'>{{bookmsg.discountprice}}元</view>
             </view>
       </view>
-  
-
-    
+       <!-- 商品类，与其他类目商品区分开，详细参数模板 -->
+      <view class='context' wx:if="{{bookmsg.type==3||bookmsg.type==4}}">
+      
+      </view>
+        <!-- 商品类，与其他类目商品区分开，详细参数模板 -->
+      <view class='context' wx:if="{{bookmsg.type==5||bookmsg.type==6}}"></view>
       </view>
 
       <!--购买数量-->

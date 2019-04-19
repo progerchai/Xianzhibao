@@ -104,7 +104,7 @@ Page({
       console.log("来自右上角转发菜单")
     }
     return {
-      title: this.data.bookmsg.bookname,
+      title: this.data.bookmsg.name,
       path: '/pages/others/details/details?bookid='+this.data.bookmsg.bookid,
       imageUrl: this.data.bookmsg.book_url,
       success: (res) => {
@@ -114,6 +114,14 @@ Page({
         console.log("转发失败", res);
       }
     }
+  },
+  show3d:function(){
+    wx.navigateTo({
+      url: '/pages/others/bookshow/bookshow',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
   //预览图片
   previewImage: function (e) {

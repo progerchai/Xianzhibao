@@ -1,0 +1,2 @@
+<!--pages/others/bookshow/bookshow.wxml-->
+<web-view src="https://www.ffgbookbar.cn/book_webgl/book_pre2.html?bookname=book01" />
