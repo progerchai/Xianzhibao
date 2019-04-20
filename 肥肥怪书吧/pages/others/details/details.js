@@ -1,8 +1,8 @@
+var time = require('../../../utils/util.js');
 Page({
   data: {
     iscollection:false,
     boughtnumber:1,
-
     isShowSelectInfo:true,
     // 书本信息如下：
   bookmsg:[],
@@ -46,13 +46,17 @@ Page({
 // 获取评论
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showComment',
-      data: { isUser: 0, openid: getApp().globalData.openid, bookid: options.bookid },
+      data: { isUser: 0, bookid: options.bookid },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
       success: function (res) {
-        console.log(res.data);
+        const temp = res.data;
+        for(var i = 0;i<res.data.length;i++)
+        {
+          temp[i].comtime = time.formatTimeTwo(temp[i].comtime, "Y/M/D h:m:s");
+        }
         that.setData({
-          comments: res.data
+          comments: temp,
         });
       }
     });

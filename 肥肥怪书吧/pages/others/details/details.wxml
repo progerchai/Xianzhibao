@@ -32,12 +32,34 @@
   </view>
   <!-- 存放非书目物品introduce -->
   <view class="detail" wx:else>
-  <view>{{bookmsg.introduce}}</view>
+    <view >
+      <text class="title">{{bookmsg.name}}</text>
+      <text class='about'>{{bookmsg.introduce}}</text>
+    </view>
+    <view class='share'>
+      <text class="price" decode="{{true}}">&nbsp;&nbsp;￥{{bookmsg.discountprice}}</text>
+      <button class='shareicon' style='flex-direction: column;' open-type="share">
+        <text class='iconfont icon-fenxiang'></text>
+        <view class='sharetext'><text>分享</text></view>
+      </button>
+      <button class='shareicon' style='flex-direction: column;' bindtap='collection' wx:if="{{!iscollection}}">
+        <text class='iconfont icon-aixin'></text>
+        <view class='sharetext'><text>收藏</text></view>
+      </button>
+      <button class='shareicon' style='flex-direction: column;' bindtap='collection' wx:if="{{iscollection}}">
+        <text class='iconfont icon-aixin' style='color:#E70510;'></text>
+        <view class='sharetext'><text>收藏</text></view>
+      </button>
+    </view>
   </view>
-  <view class="separate"></view>
+  <!-- 存放非书目物品introduce end -->
+<view class="separate" ></view>
+
+<view class='bookclass' wx:if="{{bookmsg.type==1||bookmsg.type==2}}">
+  
   <!-- sku选择 -->
   <view class='details' bindtap="detailinfomation">
-  <text >详细参数</text>
+  <text>详细参数</text>
   <text class='iconfont icon-youjiantou'></text>
   </view>
   
@@ -51,10 +73,9 @@
     <view class='numberchange'>
         <image class='minus_icon' src='/images/minusnumber.png' catchtap='minus'></image>
         <text class='shop_num'>{{boughtnumber}}</text>
-        <image class='add_icon' src='/images/addnumber.png' catchtap='add' ></image>
+        <image class='add_icon' src='/images/addnumber.png' catchtap='add'></image>
     </view>
   </view>
-
 
   <view class="separate"></view>
   <view class='comments'>
@@ -66,6 +87,47 @@
   </view>
   <view class="separate"></view>
   <view class="temp"></view>
+</view>
+<view class='notbookclass' wx:else>
+  <view class='sellersaids'>
+    <text style='margin-left:10rpx;'>卖家狠话</text>
+    <view class='said'>
+      <view class='sellersaid'>
+        <text>{{bookmsg.sellersaid}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="separate"></view>
+  <view class='buyersaids'>
+    <text style='margin-left:10rpx;'>买家咨询</text>
+    <view>
+       <view class='buyerask' wx:for="{{comments}}">
+        <!-- 买家询问start -->
+        <view class='template'>
+          <view class='author_list' style="font-size:26rpx;margin-bottom:26rpx;color:#999999;">
+          <image class="userinfo-avatar" src="{{item.avatarUrl}}" mode="cover"></image>
+            <view class='text'><a style="font-weight:700;">{{item.nickName}}</a> 评论于
+              <p>{{item.comtime}}</p></view>
+          </view>
+            <ul class="commentList">
+              <li class="item cl">
+                <div class="comment-main">
+                  <header class="comment-header">
+                    <div class="comment-meta">
+                      <p>{{item.comment}}</p>
+                    </div>
+                  </header>
+                </div>
+              </li>
+            </ul>
+        </view>
+        <!-- 买家询问end -->
+       </view>
+    </view>
+  </view>
+    <view class="separate"></view>
+</view>
+<view class='bottom_blank'></view>
 </scroll-view>
 <!-- 底部悬浮栏 -->
 <view class="detail-nav">

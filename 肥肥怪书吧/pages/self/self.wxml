@@ -47,7 +47,7 @@
 <view class='otherscontainer'>
 <view class='mycollections' bindtap='selfsell'>
       <text class='iconfont icon-shoucang' decode="{{true}}">&nbsp;&nbsp;</text>  
-      <text class='text'>我要出售</text>
+      <text class='text'>我的出售</text>
       <view class='right'><text class='iconfont icon-youjiantou'></text></view>
   </view>
   <view class="divLine"></view>
