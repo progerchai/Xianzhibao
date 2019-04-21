@@ -10,6 +10,7 @@
     "pages/logs/logs",
     "pages/template/list",
     "pages/others/mycollections/mycollections",
+    "pages/others/mysell/mysell",
     "pages/others/myaddress/myaddress",
     "pages/others/add_address/add_address",
     "pages/others/mycards/mycards",
