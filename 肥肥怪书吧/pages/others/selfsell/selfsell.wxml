@@ -11,18 +11,18 @@
         <view class="issues-input">
         <textarea class="issues-textarea" cursor-spacing="80" placeholder="请输入商品详细介绍" name="content" value="{{content}}"></textarea>
         </view>
-        <textarea class="issues-textarea" cursor-spacing="80" placeholder="如果想对买家的留言，请填写" name="content" value="{{mes}}"></textarea>
+        <textarea class="issues-textarea" cursor-spacing="80" placeholder="如果想对买家的留言，请填写" name="mes" value="{{mes}}"></textarea>
       </view>
-
       <block>
-        <text class="issues-label">选择商品图片（数量限制一张，非必填选项）</text>
+        <text class="issues-label">选择商品图片</text>
         <view class="issues-img-panel">
-          <view class="issues-photo-item add-photo" bindtap="uploadPic" wx:if="{{!isSrc}}"></view>
-          <view wx:if="{{isSrc}}" class="image_box">
-            <view class="picPre">
-              <image src="{{src}}" mode="aspectFit"></image>
-              <view bindtap="clearPic"></view>
-            </view>
+            <view class="issues-photo-item add-photo" bindtap="uploadPic" wx:if="{{!isSrc}}"></view>
+            <view wx:if="{{isSrc}}" class="image_box">
+              <view class="issues-photo-item add-photo" bindtap="uploadPic" wx:if="{{isSrc}}"></view>
+              <view class="picPre" wx:for="{{src}}">
+                <image src="{{item}}" mode="aspectFit"></image>
+                <view bindtap="clearPic" data-index='{{index}}'></view>
+          </view>
           </view>
         </view>
       </block>

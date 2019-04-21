@@ -19,8 +19,8 @@ Page({
   onLoad: function () {
     that = this;
     that.setData({//初始化数据
-      src: "",
-      isSrc: false,
+      src: [],
+      isSrc: true,
       ishide: "0",
       autoFocus: true,
       isLoading: false,
@@ -50,44 +50,90 @@ Page({
   */
   onReady: function () {
     wx.hideToast()
-
   },
 
 
   //上传图片
   uploadPic: function () {
     var that = this;
-    wx.showModal({
-      title: '提示',
-      content: '上传图片需要消耗流量，是否继续？',
-      confirmText: '继续',
-      success: function (res) {
-        if (res.confirm) {
-          wx.chooseImage({
-            count: 1, // 默认9
-            sizeType: ['compressed'], //压缩图
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
-              // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-              var tempFilePaths = res.tempFilePaths
-              console.log("地址路径为："+tempFilePaths);
-              that.setData({
-                isSrc: true,
-                src: tempFilePaths
-              })
-              console.log("地址路径为："+that.data.src);
-            }
-          })
+    if(that.data.src.length==3)
+     {
+        wx.showModal({
+          title: '提示',
+          content: '图片只能放三张哦',
+          showCancel: false,//是否显示取消按钮
+          cancelColor: 'skyblue',//取消文字的颜色
+          confirmText: "我知道了",//默认是“确定”
+          confirmColor: 'skyblue',//确定文字的颜色
+          success: function (res) { },
+          fail: function (res) { },//接口调用失败的回调函数
+          complete: function (res) { },//接口调用结束的回调函数（调用成功、失败都会执行）
+        })
+      return 0;
+     }
+     //设置第一张上传时弹出提示框消耗流量
+    if(that.data.src.length==0)
+    {
+      wx.showModal({
+        title: '提示',
+        content: '上传图片需要消耗流量，是否继续？',
+        confirmText: '继续',
+        success: function (res) {
+          if (res.confirm) {
+            wx.chooseImage({
+              count: 1, // 默认9
+              sizeType: ['compressed'], //压缩图
+              sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+              success: function (res) {
+                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+                var temp = that.data.src;
+                var tempFilePaths = res.tempFilePaths;
+                console.log(temp);
+                temp.push(tempFilePaths);
+                console.log("地址路径为：" + tempFilePaths);
+                that.setData({
+                  isSrc: true,
+                  src: temp,
+                })
+                console.log("地址路径为：" + that.data.src[0]);
+              }
+            })
+          }
         }
-      }
-    });
+      });
+    }
+    else{
+      wx.chooseImage({
+        count: 1, // 默认9
+        sizeType: ['compressed'], //压缩图
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function (res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          var temp = that.data.src;
+          var tempFilePaths = res.tempFilePaths;
+          console.log(temp);
+          temp.push(tempFilePaths);
+          console.log("地址路径为：" + tempFilePaths);
+          that.setData({
+            isSrc: true,
+            src: temp,
+          })
+          console.log("地址路径为：" + that.data.src[0]);
+        }
+      })
+    }
   },
 
   //删除图片
-  clearPic: function () {//删除图片
+  clearPic: function (event) {//删除图片
+  console.log(event);
+  var that = this;
+  var index = event.currentTarget.dataset.index;
+  var src = that.data.src;
+  src.splice(index,1);
     that.setData({
-      isSrc: false,
-      src: ""
+      isSrc: true,
+      src: src,
     // isSrc用来掩盖增加图标
     })
   },
@@ -108,6 +154,7 @@ Page({
   submitForm: function (e) {
     var goodsname = e.detail.value.goodsname;
     var content = e.detail.value.content;
+    var mes = e.detail.value.mes;
     //先进行表单非空验证
     if (goodsname == "") {
       this.setData({
