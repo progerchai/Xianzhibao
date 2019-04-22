@@ -1,7 +1,6 @@
 <view class="container">
-
   <block >
-    <text class="issues-label">我的出售</text>
+    <text class="issues-label">我要出售</text>
     <form bindsubmit="submitForm">
       <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
       <view class="issues-panel">
@@ -19,7 +18,7 @@
             <view class="issues-photo-item add-photo" bindtap="uploadPic" wx:if="{{!isSrc}}"></view>
             <view wx:if="{{isSrc}}" class="image_box">
               <view class="issues-photo-item add-photo" bindtap="uploadPic" wx:if="{{isSrc}}"></view>
-              <view class="picPre" wx:for="{{src}}">
+              <view class="picPre" wx:for="{{filepath}}">
                 <image src="{{item}}" mode="aspectFit"></image>
                 <view bindtap="clearPic" data-index='{{index}}'></view>
           </view>

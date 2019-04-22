@@ -19,7 +19,7 @@ Page({
   onLoad: function () {
     that = this;
     that.setData({//初始化数据
-      src: [],
+      filepath: [],
       isSrc: true,
       ishide: "0",
       autoFocus: true,
@@ -56,7 +56,7 @@ Page({
   //上传图片
   uploadPic: function () {
     var that = this;
-    if (that.data.src.length == 3) {
+    if (that.data.filepath.length == 3) {
       wx.showModal({
         title: '提示',
         content: '图片只能放三张哦',
@@ -71,7 +71,7 @@ Page({
       return 0;
     }
     //设置第一张上传时弹出提示框消耗流量
-    if (that.data.src.length == 0) {
+    if (that.data.filepath.length == 0) {
       wx.showModal({
         title: '提示',
         content: '上传图片需要消耗流量，是否继续？',
@@ -84,16 +84,16 @@ Page({
               sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
               success: function (res) {
                 // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                var temp = that.data.src;
+                var filepath = that.data.filepath;
                 var tempFilePaths = res.tempFilePaths;
-                console.log(temp);
-                temp.push(tempFilePaths);
+                console.log(filepath);
+                filepath.push(tempFilePaths);
                 console.log("地址路径为：" + tempFilePaths);
                 that.setData({
                   isSrc: true,
-                  src: temp,
+                  filepath: filepath,
                 })
-                console.log("地址路径为：" + that.data.src[0]);
+                console.log("地址路径为：" + that.data.filepath[0]);
               }
             })
           }
@@ -107,16 +107,16 @@ Page({
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success: function (res) {
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-          var temp = that.data.src;
+          var filepath = that.data.filepath;
           var tempFilePaths = res.tempFilePaths;
-          console.log(temp);
-          temp.push(tempFilePaths);
+          console.log(filepath);
+          filepath.push(tempFilePaths);
           console.log("地址路径为：" + tempFilePaths);
           that.setData({
             isSrc: true,
-            src: temp,
+            filepath: filepath,
           })
-          console.log("地址路径为：" + that.data.src[0]);
+          console.log("地址路径为：" + that.data.filepath[0]);
         }
       })
     }
@@ -127,12 +127,34 @@ Page({
     console.log(event);
     var that = this;
     var index = event.currentTarget.dataset.index;
-    var src = that.data.src;
-    src.splice(index, 1);
+    var filepath = that.data.filepath;
+    filepath.splice(index, 1);
     that.setData({
       isSrc: true,
-      src: src,
+      filepath: filepath,
       // isSrc用来掩盖增加图标
+    })
+  },
+  // 图片上传
+  upLoadImg:function(){
+    var that = this;
+    var tempFilePath = that.data.filepath;
+    console.log("上传的图片路径为："+tempFilePath[0]);
+    wx.uploadFile({
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
+      filePath: tempFilePath[0]+"",
+      name: 'seller_img',
+      // formData: {'user': 'test'},
+      success: function (res) {
+        console.log("图片传输成功"+res);
+        // 成功上传之后，删除后面的延迟函数，调用 toast函数
+      },
+      fail: function (res) {
+        console.log("图片传输失败" + res);
+      },
+      complete: function (res) {
+        console.log("图片传输结束" + res);
+      },
     })
   },
 
@@ -175,11 +197,11 @@ Page({
         content: '是否确认提交反馈',
         success: function (res) {
           if (res.confirm) {
-            console.log("上传成功");
+            that.upLoadImg();
             // 延迟函数
             setTimeout(function () {
-              wx.switchTab({
-                url: '/pages/self/self',
+              wx.navigateBack({
+                delta:1,
               });
               wx.showToast({
                 title: '提交成功',
@@ -191,7 +213,6 @@ Page({
           }
         }
       })
-
     }
     setTimeout(function () {
       that.setData({

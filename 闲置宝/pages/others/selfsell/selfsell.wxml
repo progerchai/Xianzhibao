@@ -1,1 +1,12 @@
-我的出售
+<view wx:if="{{!judge}}">
+  <view class='dfk'> 
+  <image class='center_pic' src='../../../images/nothing.jpg'></image>
+  您还未上传过，点击右下角即可出售
+  </view>
+</view>
+<view wx:if="{{judge}}">
+我的出售列表，底部增加一个跳转新增我要出售页面按钮
+</view>
+<view class='tonewsell' bindtap='tonewsell'>
+  <image class="add_icon" src="../../../images/add.png"></image>
+</view>
