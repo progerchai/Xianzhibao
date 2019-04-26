@@ -154,14 +154,25 @@ var acountlist=[];
       });
       return 0;
     }
-    var acount = JSON.stringify(acountlist);
-    var model = JSON.stringify(booklist);
-    console.log(acount);
-    console.log(model);
-    console.log("ggggggggggggg");
-   wx.navigateTo({
-     url: "/pages/others/balance/balance?model="+model+"&acount="+acount,
-   })
+  //   var acount = JSON.stringify(acountlist);
+  //   var model = JSON.stringify(booklist);
+  //   console.log(acount);
+  //   console.log(model);
+  //   console.log("ggggggggggggg");
+  //  wx.navigateTo({
+  //    url: "/pages/others/balance/balance?model="+model+"&acount="+acount,
+  //  })
+    wx.showModal({
+      title: '抱歉',
+      content: '目前已将在线支付功能关闭了哦，请和商家联系。',
+      showCancel: false,//是否显示取消按钮
+      cancelColor: 'skyblue',//取消文字的颜色
+      confirmText: "我知道了",//默认是“确定”
+      confirmColor: 'skyblue',//确定文字的颜色
+      success: function (res) { },
+      fail: function (res) { },//接口调用失败的回调函数
+      complete: function (res) { },//接口调用结束的回调函数（调用成功、失败都会执行）
+    })
   },
   decreaseCount:function(e){
     var componentId = e.target.dataset.index;

@@ -4,8 +4,11 @@ Page({
     iscollection:false,
     boughtnumber:1,
     isShowSelectInfo:true,
+    showsellmessage:false,
     // 书本信息如下：
   bookmsg:[],
+  //出售方信息（昵称，联系方式，微信号）
+    sellermes:["aiyouwei","15868725950","hao123"],
   comments:'',
     // banner
     imgUrls: [],
@@ -238,5 +241,11 @@ Page({
       url: "/pages/others/balance/balance?model=" + model + "&acount=" + acount,
     })
   },
+  immeConmunicate(){
+    var that = this;
+    that.setData({
+      showsellermessage:true
+    })
+  }
 
 })
