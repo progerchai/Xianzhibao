@@ -4,14 +4,16 @@ Page({
     userInfo: {}, 
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    containHeight:500,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    var that = this;
     if (app.globalData.userInfo) {
-      this.setData({
+      that.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
@@ -19,7 +21,7 @@ Page({
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
-        this.setData({
+        that.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
@@ -29,13 +31,21 @@ Page({
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
-          this.setData({
+          that.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
         }
       })
     }
+    //获取页面高度并存储
+    wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          containHeight:res.screenHeight,
+        });
+      },
+    })
   },
 
   getUserInfo: function (e) {
@@ -47,46 +57,46 @@ Page({
     })
   },
 
-  all_orders:function(){
-    wx.navigateTo({
-      url: '../others/all_orders/all_orders?currentTab=0',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  },
-  waitpay_list: function () {
-    wx.navigateTo({
-      url: '../others/all_orders/all_orders?currentTab=1',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  waitsend_list: function () {
-    wx.navigateTo({
-      url: '../others/all_orders/all_orders?currentTab=2',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-   waitreceiv_list: function () {
-    wx.navigateTo({
-      url: '../others/all_orders/all_orders?currentTab=3',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  waitback_list: function () {
-    wx.navigateTo({
-      url: '../others/all_orders/all_orders?currentTab=4',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
+  // all_orders:function(){
+  //   wx.navigateTo({
+  //     url: '../others/all_orders/all_orders?currentTab=0',
+  //     success: function(res) {},
+  //     fail: function(res) {},
+  //     complete: function(res) {},
+  //   })
+  // },
+  // waitpay_list: function () {
+  //   wx.navigateTo({
+  //     url: '../others/all_orders/all_orders?currentTab=1',
+  //     success: function (res) { },
+  //     fail: function (res) { },
+  //     complete: function (res) { },
+  //   })
+  // },
+  // waitsend_list: function () {
+  //   wx.navigateTo({
+  //     url: '../others/all_orders/all_orders?currentTab=2',
+  //     success: function (res) { },
+  //     fail: function (res) { },
+  //     complete: function (res) { },
+  //   })
+  // },
+  //  waitreceiv_list: function () {
+  //   wx.navigateTo({
+  //     url: '../others/all_orders/all_orders?currentTab=3',
+  //     success: function (res) { },
+  //     fail: function (res) { },
+  //     complete: function (res) { },
+  //   })
+  // },
+  // waitback_list: function () {
+  //   wx.navigateTo({
+  //     url: '../others/all_orders/all_orders?currentTab=4',
+  //     success: function (res) { },
+  //     fail: function (res) { },
+  //     complete: function (res) { },
+  //   })
+  // },
   selfsell: function () {
     wx.navigateTo({
       url: '../others/selfsell/selfsell',

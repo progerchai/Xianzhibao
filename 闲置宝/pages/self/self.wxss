@@ -3,25 +3,21 @@ page {
   min-height: 100%;
   background-color:#EDECE8; 
 } 
-
 .container{
   width: 100%;
-  height: 100%;
+  height: 500px;
 }   
-
 .userinfo {
   display: flex;
   flex-direction: column; 
   align-items: center;
 }
-
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
-
 .userinfo-nickname {
   color: #aaa;
 }
@@ -78,7 +74,6 @@ page {
 .text{
   float: left;
 }
-
 /* 列表二 */
 .otherscontainer{
   margin-top: 30rpx;
@@ -97,7 +92,6 @@ page {
   margin: 10rpx;
   height: 80rpx;
 }
-
 /* 可用卡券 */
 .mycards{
   margin: 10rpx;

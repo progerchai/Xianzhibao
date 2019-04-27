@@ -1,7 +1,7 @@
 <view wx:if="{{!judge}}">
   <view class='dfk'> 
   <image class='center_pic' src='../../../images/nothing.jpg'></image>
-  您还未上传过，点击右下角即可出售
+  您还未出售过商品，点击右下角即可上传
   </view>
 </view>
 <view wx:if="{{judge}}">

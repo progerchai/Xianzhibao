@@ -42,12 +42,6 @@
         "selectedIconPath": "images/classify_HL.png"
       },
       {
-        "pagePath": "pages/shopcar/shopcar",
-        "text": "购物车",
-        "iconPath": "images/shopcar.png",
-        "selectedIconPath": "images/shopcar_HL.png"
-      },
-      {
         "pagePath": "pages/self/self",
         "text": "我的",
         "iconPath": "images/self.png",

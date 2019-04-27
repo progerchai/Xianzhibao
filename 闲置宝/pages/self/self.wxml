@@ -1,4 +1,4 @@
-<view class='container'>
+<view class='container' style='height:{{containHeight-30}}px;'>
 <!-- 头像区区域开始 -->
   <view class="userinfo"> 
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"> 获取头像昵称 </button>
@@ -9,7 +9,7 @@
   </view>
 <!-- 头像区域结束 --> 
 <!-- 列表一开始 -->
-  <view class='orders_list'>
+  <view class='orders_list' hidden="{{true}}">
   <view class='block'></view>
     <view class='all_orders' bindtap='all_orders'>
       <text class='iconfont icon-quanbudingdan' decode="{{true}}">&nbsp;&nbsp;</text>
@@ -45,7 +45,7 @@
 <!-- 列表一结束 -->
 <!-- 列表二开始 -->
 <view class='otherscontainer'>
-<view class='mycollections' bindtap='selfsell'>
+  <view class='mycollections' bindtap='selfsell'>
       <text class='iconfont icon-shoucang' decode="{{true}}">&nbsp;&nbsp;</text>  
       <text class='text'>我的出售</text>
       <view class='right'><text class='iconfont icon-youjiantou'></text></view>
@@ -61,7 +61,7 @@
       <text class='iconfont icon-dizhi' decode="{{true}}">&nbsp;&nbsp;</text>  
       <text class='text'>我的地址</text>
       <view class='right'><text class='iconfont icon-youjiantou'></text></view>
-  </view> 
+    </view> 
   <view class="divLine"></view>
   <view class='mycards' bindtap='mycards'>
       <text class='iconfont icon-kaquan' decode="{{true}}">&nbsp;&nbsp;</text>  
@@ -73,9 +73,18 @@
       <text class='iconfont icon-yijianfankui' decode="{{true}}">&nbsp;&nbsp;</text>  
       <text class='text'>意见反馈</text>
       <view class='right'><text class='iconfont icon-youjiantou'></text></view>
+    </view>
+    <view class='among'></view>
   </view>
-   <view class='among'></view>
-</view>
  <view class='bottom'></view>
 <!-- 列表二结束 -->
+<!-- 广告位招租开始 -->
+  <view class='advertisement' style='text-align:center;'>
+    <image src='../../images/advertisement.png' style='mode:aspectFit;height:100px;'></image>
+  </view>
+<!-- 广告位招租结束 -->
+</view>
+
+<view class='description' style='height:30px;width:100%;text-align:center;color:#6E6E6E;font-size:16px;'>
+视时空科技-2019
 </view>

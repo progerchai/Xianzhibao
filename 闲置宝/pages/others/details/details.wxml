@@ -133,9 +133,9 @@
 <view class="detail-nav">
   <image bindtap="toHome" src="../../../images/home.png" />
   <view class="line_nav"></view>
-  <image bindtap="toCar" src="../../../images/shopcar.png" />
-  <button class="button-green" bindtap="addCar" formType="submit">加入购物车</button>
-  <button class="button-red" bindtap="immeConmunicate" formType="submit">立即沟通</button>
+  <image bindtap="toSelf" src="../../../images/self.png" />
+  <button class="button-green" bindtap="addCar" formType="submit">留言咨询</button>
+  <button class="button-red" bindtap="openmask" formType="submit">与卖家沟通</button>
 </view>
 
 <!-- 抽屉层开始 -->
@@ -207,8 +207,8 @@
 </view>
 <!-- 抽屉层结束 -->
 <!-- 遮罩层开始 -->
-<view class='box'>
-  <view class='box-alert'>
+<view class='box' bindtap='closemask' wx:if="{{showsellermessage}}">
+  <view class='box-alert' catchtap='nullfunction'>
   <view class='box-topbar'><view>出售者信息</view></view>
   <view class='box-container'>
   <view class='box-container-left'>
@@ -217,13 +217,14 @@
     <view>微信号：</view>
   </view>
   <view class='box-container-right'>
-    <view>{{sellermes[0]}}</view>
-    <view>{{sellermes[1]}}</view>
-    <view>{{sellermes[2]}}</view>
+    <view data-value="{{bookmsg.sellerNickname}}" catchtap='copytext'>{{bookmsg.sellerNickname}}</view>
+    <view data-value="{{bookmsg.sellerphone}}" catchtap='copytext'>{{bookmsg.sellerphone}}</view>
+    <view data-value="{{bookmsg.sellerWechat}}" catchtap='copytext'>{{bookmsg.sellerWechat}}</view>
   </view>
-    
   </view>
+
   <view class='box-bottombar'>点击文字即可复制内容</view>
+
   </view>
 </view>
 <!-- 遮罩层结束 -->

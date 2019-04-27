@@ -7,8 +7,6 @@ Page({
     showsellmessage:false,
     // 书本信息如下：
   bookmsg:[],
-  //出售方信息（昵称，联系方式，微信号）
-    sellermes:["aiyouwei","15868725950","hao123"],
   comments:'',
     // banner
     imgUrls: [],
@@ -146,29 +144,34 @@ Page({
     })
   },
   // 跳到购物车
-  toCar() {
+  toSelf:function() {
     wx.switchTab({
-      url: '/pages/shopcar/shopcar'
+      url: '/pages/self/self'
     })
   },
   detailinfomation:function(){
     this.showSelectInfo();
   },
   addCar: function () {
-    wx.request({
-      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/addShoppingcar',
-      data: { openid: getApp().globalData.openid, bookid: this.data.bookmsg.bookid, boughtnumber: this.data.boughtnumber},
-      method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { "content-type": "application/json" }, // 设置请求的 header
-      success: function (res) {
-        console.log(res);
-        wx.showToast({
-          title: '加入购物车成功',
+    // wx.request({
+    //   url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/addShoppingcar',
+    //   data: { openid: getApp().globalData.openid, bookid: this.data.bookmsg.bookid, boughtnumber: this.data.boughtnumber},
+    //   method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    //   header: { "content-type": "application/json" }, // 设置请求的 header
+    //   success: function (res) {
+    //     console.log(res);
+    //     wx.showToast({
+    //       title: '加入购物车成功',
+    //       icon: 'success',
+    //       duration: 2000
+    //     });
+    //   }
+    // });
+    wx.showToast({
+          title: '留言咨询功能',
           icon: 'success',
           duration: 2000
         });
-      }
-    });
   },
 
   //显示弹窗
@@ -229,7 +232,7 @@ Page({
   },
 
   // 立即购买
-  immeBuy() {
+  immeBuy:function() {
    //跳转结算页面
     var booklist = [];
     var acountlist = [];
@@ -241,10 +244,36 @@ Page({
       url: "/pages/others/balance/balance?model=" + model + "&acount=" + acount,
     })
   },
-  immeConmunicate(){
+  //弹出出售者信息遮罩层
+  openmask:function(){
     var that = this;
     that.setData({
       showsellermessage:true
+    })
+  },
+  closemask: function () {
+    var that = this;
+    that.setData({
+      showsellermessage: false
+    })
+  },
+  // 空函数，阻塞时间冒泡
+  nullfunction:function(){
+  },
+  //复制文本到剪切板
+  copytext:function(e){
+    var text = e.currentTarget.dataset.value;
+    wx.setClipboardData({
+      data: text,
+      success:function(){
+        console.log("已复制到剪切板");
+      },
+      fail:function(){
+        console.log("复制到剪切板失败");
+      },
+      complete:function(){
+        console.log("复制过程结束");
+      }
     })
   }
 
