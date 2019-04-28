@@ -2,7 +2,30 @@
 var app = getApp();
 Page({
   data: {
-    judgecontent:false,
+    judgecontent:true,
+    goods:[
+        {
+          img: "http://img3m5.ddimg.cn/20/1/23239775-1_x_1.jpg",
+          name: "HTML5 Canvas核心技术1",
+          inrtoduce: "123",
+          discountprice: 12,
+          comtime: "2019-4-28 10:12:56"
+        },
+        {
+          img: "http://img3m5.ddimg.cn/20/1/23239775-1_x_1.jpg",
+          name: "HTML5 Canvas核心技术2",
+          inrtoduce: "123",
+          discountprice: 12,
+          comtime: "2019-4-28 10:12:56"
+        } ,
+        {
+          img: "http://img3m5.ddimg.cn/20/1/23239775-1_x_1.jpg",
+          name: "HTML5 Canvas核心技术2",
+          inrtoduce: "123",
+          discountprice: 12,
+          comtime: "2019-4-28 10:12:56"
+        }
+      ],
   },
   onLoad: function () {
       // 刚进入页面或返回时对数据进行刷新

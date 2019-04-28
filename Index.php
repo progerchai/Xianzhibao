@@ -81,7 +81,16 @@ class Index
         }
         return json($res);
     }     
-    
+    //上传图片到服务器
+    public function upLoadImg(Request $request){
+        $res=[];
+        if($request->isPost()){
+            $seller_img=$request->post('seller_img');
+           // User::where("openid","eq",$openid)->update(['address'=>$address]);
+        }
+        return json($seller_img);
+    }
+
     public function addComment(Request $request){
         $res=0;
         if($request->isPost()){

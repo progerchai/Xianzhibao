@@ -1,3 +1,6 @@
+page{
+  background-color:#F0F0F1;
+}
 .add_btn{
   display: flex;
   justify-content: center;
@@ -18,4 +21,41 @@
   width: 100%;
   height: 286rpx;
   margin-top: 230rpx;
+}
+.backgroundbar{
+  height:160rpx;
+  background:linear-gradient(to right, #00a7ce, #0047ba); 
+}
+.container{
+  margin-top: -60rpx;
+}
+.template_goods{
+  padding:50rpx 44rpx 100rpx 44rpx;
+  margin-bottom: 12px;
+  border-radius: 15%;
+  background-color: #fff;
+}
+.box{
+  height: 200rpx;
+  background: #F0F0F1;
+  display: flex;
+  flex-direction: row;
+}
+.tatle-name{
+  font-weight:600;
+  font-size: 13pt;
+}
+.title-time{
+  font-weight: 100;
+  font-size: 10pt;
+}
+.box-img{
+  width: 296rpx;
+}
+.box-img image{
+  width: 210rpx;
+  height: 210rpx;
+}
+.box-discription{
+  width: 274rpx;
 }

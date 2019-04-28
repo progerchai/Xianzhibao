@@ -1,12 +1,26 @@
-<view wx:if="{{!judge}}">
+
+<view hidden="{{judgecontent}}">
   <view class='dfk'> 
   <image class='center_pic' src='../../../images/nothing.jpg'></image>
-  您还未出售过商品，点击右下角即可上传
+  您还未上传过商品，点击右下角即可上传
   </view>
 </view>
-<view wx:if="{{judge}}">
-我的出售列表，底部增加一个跳转新增我要出售页面按钮
+
+<view hidden="{{!judgecontent}}">
+  <view class='backgroundbar'></view>
+    <view class='container'>
+      <view class='template_goods' wx:for="{{goods}}">
+        <view class='tatle-name'>{{item.name}}</view>
+        <view class='tatle-time'>{{item.comtime}}</view>
+        <view class='box'>
+          <view class='box-img'><image src='{{item.img}}'></image></view>
+          <view class='box-discription'>{{item.inrtoduce}}</view>
+        </view>
+      </view>
+    </view>
 </view>
+
 <view class='tonewsell' bindtap='tonewsell'>
   <image class="add_icon" src="../../../images/add.png"></image>
 </view>
+

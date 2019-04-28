@@ -135,25 +135,27 @@ Page({
       // isSrc用来掩盖增加图标
     })
   },
-  // 图片上传
+  // 图片上传服务器端
   upLoadImg:function(){
     var that = this;
     var tempFilePath = that.data.filepath;
     console.log("上传的图片路径为："+tempFilePath[0]);
     wx.uploadFile({
-      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
-      filePath: tempFilePath[0]+"",
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/upLoadImg',
+      filePath: tempFilePath[0]+'',
       name: 'seller_img',
-      // formData: {'user': 'test'},
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
       success: function (res) {
-        console.log("图片传输成功"+res);
+        console.log("图片传输成功" + JSON.stringify(res.data));
         // 成功上传之后，删除后面的延迟函数，调用 toast函数
       },
       fail: function (res) {
-        console.log("图片传输失败" + res);
+        console.log("图片传输失败" + JSON.stringify(res));
       },
       complete: function (res) {
-        console.log("图片传输结束" + res);
+        console.log("图片传输结束" + JSON.stringify(res));
       },
     })
   },
