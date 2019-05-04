@@ -25,15 +25,15 @@ Page({
     });
     else
     {
-    var content = encodeURI(encodeURI(inputVal));
-    console.log(content);
+    // var content = encodeURI(inputVal);
+    // console.log(content);
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/Index/query',
-      data: { querycontent: content },
+      data: { querycontent: inputVal },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { "content-type": "application/json" }, // 设置请求的 header
+      header: { "content-type": "application/x-www-form-urlencoded;charset=utf-8" }, // 设置请求的 header
       success: function (res) {
-        console.log(res.data);
+        // console.log(res.data);
         that.setData({
           queryresult: res.data
         });

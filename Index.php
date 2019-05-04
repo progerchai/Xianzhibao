@@ -80,14 +80,13 @@ class Index
             }
         }
         return json($res);
-    } 
-    //搜索功能，简单检索数据库 name、discription  
+    }
+    //搜索功能，简单检索数据库 name、discription  1
     public function query(Request $request){
         $res=[];
         if($request->isGet()){
           $querycontent=$request->get('querycontent');
-            $content=substr($querycontent,1,-1);
-            $map['name | introduce '] =array('like','%'.$content.'%');
+            $map['name | introduce '] =array('like','%'.$querycontent.'%'); 
             try{
                 $res= Book::where($map)->select();
             }
