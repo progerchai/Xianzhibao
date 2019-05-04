@@ -28,8 +28,8 @@ Page({
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 1 },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { "content-type": "application/json" }, // 设置请求的 header
+      method: 'GET',
+      header: { "content-type": "application/json" },
       success: function (res) {
         that.setData({
           resoutuijian:res.data
@@ -40,8 +40,8 @@ Page({
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 2 },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { "content-type": "application/json" }, // 设置请求的 header
+      method: 'GET',
+      header: { "content-type": "application/json" },
       success: function (res) {
         that.setData({
           jingpinhaoshu: res.data
@@ -52,8 +52,8 @@ Page({
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 3 },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { "content-type": "application/json" }, // 设置请求的 header
+      method: 'GET',
+      header: { "content-type": "application/json" },
       success: function (res) {
         that.setData({
           xinshuremai: res.data
@@ -64,8 +64,8 @@ Page({
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 4 },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { "content-type": "application/json" }, // 设置请求的 header
+      method: 'GET',
+      header: { "content-type": "application/json" },
       success: function (res) {
         that.setData({
           jikemiaosha: res.data
@@ -76,8 +76,8 @@ Page({
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 5 },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { "content-type": "application/json" }, // 设置请求的 header
+      method: 'GET',
+      header: { "content-type": "application/json" },
       success: function (res) {
         that.setData({
           ershoujiushu: res.data
@@ -88,8 +88,8 @@ Page({
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 5 },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { "content-type": "application/json" }, // 设置请求的 header
+      method: 'GET',
+      header: { "content-type": "application/json" },
       success: function (res) {
         that.setData({
           ershouzahuo: res.data

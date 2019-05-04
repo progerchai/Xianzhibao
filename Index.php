@@ -81,6 +81,19 @@ class Index
         }
         return json($res);
     }
+    //个人出售列表信息展示
+    public function selfSellShow(Request $request){
+        $res=[];
+        if($request->isGet()){
+            $openid=$request->get('openid');
+            try{
+              if($openid)
+                $res= Book::where("openid","eq",$openid)->select();
+            } catch (Exception $ex) {
+            }
+        }
+        return json($res);
+    }
     //搜索功能，简单检索数据库 name、discription  1
     public function query(Request $request){
         $res=[];
