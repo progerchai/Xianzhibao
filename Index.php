@@ -80,7 +80,22 @@ class Index
             }
         }
         return json($res);
-    }     
+    } 
+    //搜索功能，简单检索数据库 name、discription  
+    public function query(Request $request){
+        $res=[];
+        if($request->isGet()){
+          $querycontent=$request->get('querycontent');
+            $content=substr($querycontent,1,-1);
+            $map['name | introduce '] =array('like','%'.$content.'%');
+            try{
+                $res= Book::where($map)->select();
+            }
+            catch (Exception $ex) {
+            }
+        }
+        return json($res);
+    }      
     //上传图片到服务器
     public function upLoadImg(Request $request){
         $res=[];

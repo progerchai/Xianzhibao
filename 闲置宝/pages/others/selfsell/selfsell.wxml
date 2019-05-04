@@ -14,7 +14,10 @@
         <view class='tatle-time'>{{item.comtime}}</view>
         <view class='box'>
           <view class='box-img'><image src='{{item.img}}'></image></view>
-          <view class='box-discription'>{{item.inrtoduce}}</view>
+          <view class='box-discription'><view class='box-discription-detail'>{{item.inrtoduce}}</view></view>
+        </view>
+        <view class='floor-total'>
+          <view>共一件商品 我的售价为：</view><view class='pirce'>¥{{item.discountprice}}</view>
         </view>
       </view>
     </view>

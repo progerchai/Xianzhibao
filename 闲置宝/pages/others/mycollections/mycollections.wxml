@@ -12,7 +12,7 @@
         <image class='image' src="{{item.book_url}}" mode='aspectFit'></image>
       </view>
       <view class="productInfo">
-        <view class="productTitle">{{item.bookname}}（{{item.press}}）</view>
+        <view class="productTitle">{{item.name}}{{" "+item.press}}</view>
         <view class='priceitem'>
           <view class='price'>
             <text class="productPrice">￥{{item.discountprice}}</text>

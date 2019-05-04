@@ -63,20 +63,19 @@
   <text class='iconfont icon-youjiantou'></text>
   </view>
   
-  <view class="separate"></view>
+  <!-- <view class="separate"></view> -->
 
-  <view class='number'>
+  <!-- <view class='number'>
   <view class='numberchangeleft'>
     <text bindtap="toggleDialog">请选择购买数量</text>
-  </view> 
+  </view>  -->
   <!-- 选择修改 -->
-    <view class='numberchange'>
+    <!-- <view class='numberchange'>
         <image class='minus_icon' src='/images/minusnumber.png' catchtap='minus'></image>
         <text class='shop_num'>{{boughtnumber}}</text>
         <image class='add_icon' src='/images/addnumber.png' catchtap='add'></image>
     </view>
-  </view>
-
+  </view> -->
   <view class="separate"></view>
   <view class='comments'>
     <text>商品评价</text>

@@ -7,21 +7,21 @@ Page({
         {
           img: "http://img3m5.ddimg.cn/20/1/23239775-1_x_1.jpg",
           name: "HTML5 Canvas核心技术1",
-          inrtoduce: "123",
-          discountprice: 12,
+        inrtoduce: "HTML5 Canvas核心技术：图形、动画与游戏开发(HTML 5 Canvas领域的标杆之作，公认的权威经典)",
+          discountprice: 12.50,
           comtime: "2019-4-28 10:12:56"
         },
         {
           img: "http://img3m5.ddimg.cn/20/1/23239775-1_x_1.jpg",
           name: "HTML5 Canvas核心技术2",
-          inrtoduce: "123",
-          discountprice: 12,
+          inrtoduce: "HTML5 Canvas核心技术：图形、动画与游戏开发(HTML 5 Canvas领域的标杆之作，公认的权威经典)",
+          discountprice: 12.66,
           comtime: "2019-4-28 10:12:56"
         } ,
         {
           img: "http://img3m5.ddimg.cn/20/1/23239775-1_x_1.jpg",
-          name: "HTML5 Canvas核心技术2",
-          inrtoduce: "123",
+          name: "HTML5 Canvas核心技术3",
+          inrtoduce: "HTML5 Canvas核心技术：图形、动画与游戏开发(HTML 5 Canvas领域的标杆之作，公认的权威经典)",
           discountprice: 12,
           comtime: "2019-4-28 10:12:56"
         }

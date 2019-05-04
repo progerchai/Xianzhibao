@@ -215,21 +215,22 @@ Page({
     });
 
   },
-  minus:function(){
-    var that = this;
-    if(this.data.boughtnumber>1)
-      this.data.boughtnumber--;
-    that.setData({
-      boughtnumber:this.data.boughtnumber
-    });
-  },
-  add: function () {
-    var that = this;
-    this.data.boughtnumber++;
-    that.setData({
-      boughtnumber: this.data.boughtnumber
-    });
-  },
+  // 购物车加减功能
+  // minus:function(){
+  //   var that = this;
+  //   if(this.data.boughtnumber>1)
+  //     this.data.boughtnumber--;
+  //   that.setData({
+  //     boughtnumber:this.data.boughtnumber
+  //   });
+  // },
+  // add: function () {
+  //   var that = this;
+  //   this.data.boughtnumber++;
+  //   that.setData({
+  //     boughtnumber: this.data.boughtnumber
+  //   });
+  // },
 
   // 立即购买
   immeBuy:function() {

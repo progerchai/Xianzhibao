@@ -2,7 +2,8 @@ Page({
   data: {
     inputShowed: false,
     inputVal: "",
-    judge:0
+    judge:0,
+    queryresult:null,
   },
   clearInput: function () {
     this.setData({
@@ -16,11 +17,32 @@ Page({
     });
   },
   judge: function (e) {
+    var that = this;
     var inputVal= e.detail.value;
-    console.log(inputVal);
-if(inputVal.length>0)
-  this.setData({
-    judge: 1
-  });
+  if(inputVal.length==0)
+    that.setData({
+      judge: 0
+    });
+    else
+    {
+    var content = encodeURI(encodeURI(inputVal));
+    console.log(content);
+    wx.request({
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/Index/query',
+      data: { querycontent: content },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: { "content-type": "application/json" }, // 设置请求的 header
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          queryresult: res.data
+        });
+      }
+    });
+
+      that.setData({
+        judge: 1
+      });
+    }
   },
 });

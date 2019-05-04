@@ -50,12 +50,34 @@ page{
   font-size: 10pt;
 }
 .box-img{
-  width: 296rpx;
+  width: 185rpx;
 }
 .box-img image{
-  width: 210rpx;
-  height: 210rpx;
+  width: 165rpx;
+  height: 165rpx;
+  padding: 20rpx;
 }
 .box-discription{
-  width: 274rpx;
+  width: 478rpx;
+  height: 160rpx;
+  padding: 20rpx;
+}
+.box-discription-detail{
+  font-size: 13pt;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+.floor-total{
+  display: flex;
+  flex-direction: row;
+  float: right;
+}
+.pirce{
+  font-weight: 600;
+  padding-right: 10rpx;
 }
