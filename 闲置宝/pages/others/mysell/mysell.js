@@ -141,9 +141,9 @@ Page({
     var tempFilePath = that.data.filepath;
     console.log("上传的图片路径为："+tempFilePath[0]);
     wx.uploadFile({
-      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/upLoadImg',
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/Index/upLoadImg',
       filePath: tempFilePath[0]+'',
-      name: 'seller_img',
+      name: 'file',
       header: {
         "Content-Type": "multipart/form-data"
       },

@@ -5,6 +5,7 @@ Page({
     boughtnumber:1,
     isShowSelectInfo:true,
     showsellmessage:false,
+    inputmessage:false,
     // 书本信息如下：
   bookmsg:[],
   comments:'',
@@ -152,26 +153,28 @@ Page({
   detailinfomation:function(){
     this.showSelectInfo();
   },
-  addCar: function () {
-    // wx.request({
-    //   url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/addShoppingcar',
-    //   data: { openid: getApp().globalData.openid, bookid: this.data.bookmsg.bookid, boughtnumber: this.data.boughtnumber},
-    //   method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-    //   header: { "content-type": "application/json" }, // 设置请求的 header
-    //   success: function (res) {
-    //     console.log(res);
-    //     wx.showToast({
-    //       title: '加入购物车成功',
-    //       icon: 'success',
-    //       duration: 2000
-    //     });
-    //   }
-    // });
-    wx.showToast({
-          title: '留言咨询功能',
+  addComments:function(){
+    wx.request({
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/addComment',
+      data: { openid: getApp().globalData.openid, bookid: this.data.bookmsg.bookid, comments: this.data.comments },
+      method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: { "content-type": "application/json" }, // 设置请求的 header
+      success: function (res) {
+        console.log(res);
+        wx.showToast({
+          title: '加入购物车成功',
           icon: 'success',
           duration: 2000
         });
+      }
+    });
+  },
+  addCar: function () {
+    //添加至购物车，备用
+    var that = this;
+    that.setData({
+      inputmessage:true,
+    });
   },
 
   //显示弹窗
@@ -252,10 +255,12 @@ Page({
       showsellermessage:true
     })
   },
+  //两个遮罩层都关闭
   closemask: function () {
     var that = this;
     that.setData({
-      showsellermessage: false
+      showsellermessage: false,
+      inputmessage:false
     })
   },
   // 空函数，阻塞时间冒泡

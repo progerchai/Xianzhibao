@@ -110,20 +110,23 @@ class Index
     }      
     //上传图片到服务器
     public function upLoadImg(Request $request){
-        $res=[];
-        if($request->isPost()){
-            $seller_img=$request->post('seller_img');
-           // User::where("openid","eq",$openid)->update(['address'=>$address]);
-        }
-        return json($seller_img);
+      $file = request()->file('file');
+      if ($file) {
+        $info = $file->move('public/uploads/');
+        if ($info) 
+          {
+            $file = $info->getSaveName();
+            $res = ['errCode'=>0,'errMsg'=>'图片上传成功','file'=>$file];
+            return json($res);
+          }
+       } 
     }
 
     public function addComment(Request $request){
         $res=0;
         if($request->isPost()){
             $bookid=$request->post('bookid');
-            $evaluate=$request->post('evaluate');
-            $comment=$request->post('comment');
+            $comments=$request->post('comments');
             $openid=$request->post('openid');
             // openid,考虑删除，解除关联
             $nickName=$request->post('nickName');
@@ -132,8 +135,7 @@ class Index
             try {
                 Comments::create([
                   'bookid'=>$bookid,
-                'evaluate'=>$evaluate,
-                'comment' =>$comment,
+                'comments' =>$comments,
                 'comtime'=>$comtime,
                 'openid' => $openid,
                 'nickName' => $nickName,

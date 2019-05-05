@@ -63,19 +63,6 @@
   <text class='iconfont icon-youjiantou'></text>
   </view>
   
-  <!-- <view class="separate"></view> -->
-
-  <!-- <view class='number'>
-  <view class='numberchangeleft'>
-    <text bindtap="toggleDialog">请选择购买数量</text>
-  </view>  -->
-  <!-- 选择修改 -->
-    <!-- <view class='numberchange'>
-        <image class='minus_icon' src='/images/minusnumber.png' catchtap='minus'></image>
-        <text class='shop_num'>{{boughtnumber}}</text>
-        <image class='add_icon' src='/images/addnumber.png' catchtap='add'></image>
-    </view>
-  </view> -->
   <view class="separate"></view>
   <view class='comments'>
     <text>商品评价</text>
@@ -205,7 +192,7 @@
   </view>
 </view>
 <!-- 抽屉层结束 -->
-<!-- 遮罩层开始 -->
+<!-- 遮罩层1开始 -->
 <view class='box' bindtap='closemask' wx:if="{{showsellermessage}}">
   <view class='box-alert' catchtap='nullfunction'>
   <view class='box-topbar'><view>出售者信息</view></view>
@@ -221,10 +208,16 @@
     <view data-value="{{bookmsg.sellerWechat}}" catchtap='copytext'>{{bookmsg.sellerWechat}}</view>
   </view>
   </view>
-
   <view class='box-bottombar'>点击文字即可复制内容</view>
-
   </view>
 </view>
-<!-- 遮罩层结束 -->
+<!-- 遮罩层1结束 -->
+<!-- 遮罩层2开始 -->
+<view class='box' bindtap='closemask' wx:if="{{inputmessage}}">
+  <view class='box-alert' catchtap='nullfunction'>
+
+<textarea class="issues-textarea" cursor-spacing="50" placeholder="请输入留言内容" name="comments" value="{{comments}}"></textarea>
+  </view>
+</view>
+<!-- 遮罩层2结束 -->
 
