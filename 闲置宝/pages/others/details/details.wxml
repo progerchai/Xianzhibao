@@ -100,7 +100,7 @@
                 <div class="comment-main">
                   <header class="comment-header">
                     <div class="comment-meta">
-                      <p>{{item.comment}}</p>
+                      <p>{{item.comments}}</p>
                     </div>
                   </header>
                 </div>

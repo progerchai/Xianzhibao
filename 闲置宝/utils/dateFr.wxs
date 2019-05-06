@@ -6,7 +6,6 @@ var dateFormat = function (timestamp, format) {
     format = "yyyy-MM-dd hh:mm:ss";
   }
   timestamp = parseInt(timestamp)*1000;
-  console.log(timestamp);
   var realDate = getDate(timestamp);
   function timeFormat(num) {
     return num < 10 ? '0' + num : num;

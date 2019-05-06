@@ -107,12 +107,24 @@ class Index
             }
         }
         return json($res);
-    }      
+    }    
+    //创建目录
+    // function mdir($name)
+    // {
+    //     $subdir = "/data/wwwroot/www.ffgbookbar.cn/BookStoreProject/public/uploads/" . $name;
+    //     if (!is_dir($subdir)) {
+    //        mkdir($subdir, 0777, true);
+    //     }
+    //     return $subdir;
+    // }
     //上传图片到服务器
     public function upLoadImg(Request $request){
       $file = request()->file('file');
+      $openid = request()->post("openid");
+      $uptime = request()->post("uptime");
+      // $this->mdir($openid);
       if ($file) {
-        $info = $file->move('public/uploads/');
+        $info = $file->move('/data/wwwroot/www.ffgbookbar.cn/BookStoreProject/public/uploads/'.$openid.'/'.$uptime);
         if ($info) 
           {
             $file = $info->getSaveName();

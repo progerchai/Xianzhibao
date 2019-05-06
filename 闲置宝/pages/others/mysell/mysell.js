@@ -59,7 +59,7 @@ Page({
     if (that.data.filepath.length == 3) {
       wx.showModal({
         title: '提示',
-        content: '图片只能放三张哦',
+        content: '图片最多只能放三张哦',
         showCancel: false,//是否显示取消按钮
         cancelColor: 'skyblue',//取消文字的颜色
         confirmText: "我知道了",//默认是“确定”
@@ -139,25 +139,32 @@ Page({
   upLoadImg:function(){
     var that = this;
     var tempFilePath = that.data.filepath;
-    console.log("上传的图片路径为："+tempFilePath[0]);
-    wx.uploadFile({
-      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/Index/upLoadImg',
-      filePath: tempFilePath[0]+'',
-      name: 'file',
-      header: {
-        "Content-Type": "multipart/form-data"
-      },
-      success: function (res) {
-        console.log("图片传输成功" + JSON.stringify(res.data));
-        // 成功上传之后，删除后面的延迟函数，调用 toast函数
-      },
-      fail: function (res) {
-        console.log("图片传输失败" + JSON.stringify(res));
-      },
-      complete: function (res) {
-        console.log("图片传输结束" + JSON.stringify(res));
-      },
-    })
+    var uptime = Date.parse(new Date()); 
+   for(var i = 0;i<tempFilePath.length;i++)
+   {
+     wx.uploadFile({
+       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/Index/upLoadImg',
+       filePath: tempFilePath[i] + '',
+       name: 'file',
+       header: {
+         "Content-Type": "multipart/form-data"
+       },
+       formData: {
+         "openid":app.globalData.openid,
+         "uptime":uptime,
+       },
+       success: function (res) {
+         console.log("图片传输成功" + JSON.stringify(res.data));
+         // 成功上传之后，删除后面的延迟函数，调用 toast函数
+       },
+       fail: function (res) {
+         console.log("图片传输失败" + JSON.stringify(res));
+       },
+       complete: function (res) {
+         console.log("图片传输结束" + JSON.stringify(res));
+       },
+     })
+   }
   },
 
   //表单验证
