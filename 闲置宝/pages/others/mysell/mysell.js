@@ -9,9 +9,12 @@ Page({
     list_remind: '加载中',
     itemopen: false,
     hasFeed: false,
-    goodsname: '',
-    content: '',
-    mes: '',
+    goodsname: '第一件商品',//商品名称
+    content: '我是商品详细介绍',//商品详细介绍
+    mes: '我是卖家留言',//卖家留言
+    price:12,//价格
+    sellerphone:'联系方式',//卖家联系方式
+    sellerWechat:'weixinhao',//卖家微信号
     info: '',
     showTopTips: false,
     TopTips: '',
@@ -135,6 +138,19 @@ Page({
       // isSrc用来掩盖增加图标
     })
   },
+  //商品文本信息上传，传入时间戳作为判断依据
+  goodsupload: function (uptime){
+    wx.request({
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/Index/goodsUpload',
+      data: { openid: app.globalData.openid, uptime: uptime, goodsname: this.data.goodsname, content: this.data.content, mes: this.data.mes, price: this.data.price, sellerNickname: app.globalData.userInfo.nickName, sellerphone: this.data.sellerphone, sellerWechat: this.data.sellerWechat,},
+      method: 'POST',
+      header: { "content-type": "application/x-www-form-urlencoded" },
+      success: function (res) {
+        console.log("商品文本信息上传成功");
+        console.log(res.data);
+      }
+    });
+  },
   // 图片上传服务器端
   upLoadImg:function(){
     var that = this;
@@ -155,7 +171,8 @@ Page({
        },
        success: function (res) {
          console.log("图片传输成功" + JSON.stringify(res.data));
-         // 成功上传之后，删除后面的延迟函数，调用 toast函数
+         // 成功上传之后，调用商品内容传输函数 goodsupload()
+         that.goodsupload(uptime);
        },
        fail: function (res) {
          console.log("图片传输失败" + JSON.stringify(res));

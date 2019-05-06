@@ -46,7 +46,7 @@ class Index
         if($request->isPost()){
             $openid=$request->post('openid');
             $nickname=$request->post('nickname');
-            $headportrait_url=$request->post('headportrait_url');;
+            $headportrait_url=$request->post('headportrait_url');
             $date=date_create();
             $submission_date= date_timestamp_get($date);
             try {
@@ -107,16 +107,50 @@ class Index
             }
         }
         return json($res);
-    }    
-    //创建目录
-    // function mdir($name)
-    // {
-    //     $subdir = "/data/wwwroot/www.ffgbookbar.cn/BookStoreProject/public/uploads/" . $name;
-    //     if (!is_dir($subdir)) {
-    //        mkdir($subdir, 0777, true);
-    //     }
-    //     return $subdir;
-    // }
+    }   
+    //上传商品文本信息，以时间戳作为区别标准 
+    public function goodsUpload(Request $request){
+       $res=0;
+       $length = Book::table("book")->count();
+       // $length = mysql_num_rows($resultlist);
+       // if (!$length) {
+       //    printf("Error: %s\n", mysqli_error($conn));
+       //    exit();
+       //    }
+        if($request->isPost()){
+            $bookid=$length+1;
+            $openid=$request->post('openid');
+            $uptime=$request->post('uptime');
+            $goodsname=$request->post('goodsname');
+            $content=$request->post('content');
+            $mes=$request->post('mes');
+            $price=$request->post('price');
+            $sellerNickname=$request->post('sellerNickname');
+            $sellerphone=$request->post('sellerphone');
+            $sellerWechat=$request->post('sellerWechat');
+            try {
+                Book::create([
+                'bookid'=>$bookid,
+                'openid' => $openid,
+                'comtime' => $uptime,
+                'name' =>$goodsname,
+                'introduce'=>$content,
+                'sellersaid'=>$mes,
+                'discountprice'=>$price,
+                //用户自由上传，暂默认商品类型type=5
+                'type'=>5,
+                'sellerNickname'=>$sellerNickname,
+                'sellerphone'=>$sellerphone,
+                'sellerWechat'=>$sellerWechat,
+            ]);
+                $res=1;
+            } catch (Exception $ex) {
+                $res=-1;
+            }
+        }
+        //传回bookid检查是否正确
+        return json(["msg"=>$res,'errMsg'=>'商品文本信息上传成功','bookid'=>$bookid]);
+    }
     //上传图片到服务器
     public function upLoadImg(Request $request){
       $file = request()->file('file');
