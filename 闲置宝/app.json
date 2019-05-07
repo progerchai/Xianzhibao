@@ -2,9 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/others/details/details",
-    "pages/others/all_orders/all_orders",
     "pages/self/self",
-    "pages/shopcar/shopcar",
     "pages/fenlei/fenlei",
     "pages/search_page/search_page",
     "pages/logs/logs",
@@ -15,8 +13,6 @@
     "pages/others/add_address/add_address",
     "pages/others/mycards/mycards",
     "pages/others/myoptions/myoptions",
-    "pages/others/order_detail/order_details",
-    "pages/others/balance/balance",
     "pages/others/selfsell/selfsell",
     "pages/others/bookshow/bookshow"
   ],
