@@ -5,15 +5,29 @@
       <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
       <view class="issues-panel">
         <view class="issues-input">
-          <input placeholder="请输入商品名称" name="title" value="{{goodsname}}" />
+          <input placeholder="请输入商品名称" name="goodsname" value="{{goodsname}}" />
         </view>
         <view class="issues-input">
         <textarea class="issues-textarea" cursor-spacing="80" placeholder="请输入商品详细介绍" name="content" value="{{content}}"></textarea>
         </view>
         <textarea class="issues-textarea" cursor-spacing="80" placeholder="如果想对买家的留言，请填写" name="mes" value="{{mes}}"></textarea>
       </view>
+      <view class='info-box'>
+        <view class='info'>
+          <view class='info-left'>
+            <view class="price">价格:</view>
+            <view class="phone">联系方式:</view>
+            <view class="wechat">微信号:</view>
+          </view>
+          <view class='info-right'>
+            <input placeholder='想要出售的价格' type='digit' name="price" value="{{price}}"></input>
+            <input placeholder='您的电话号码' type='number' name="phone" value="{{phone}}"></input>
+            <input placeholder='您的微信号' type='text' name="wechat" value="{{wechat}}"></input>
+          </view>
+        </view>
+      </view>
       <block>
-        <text class="issues-label">选择商品图片</text>
+        <text class="issues-label">选择商品图片(至少上传一张)</text>
         <view class="issues-img-panel">
             <view class="issues-photo-item add-photo" bindtap="uploadPic" wx:if="{{!isSrc}}"></view>
             <view wx:if="{{isSrc}}" class="image_box">

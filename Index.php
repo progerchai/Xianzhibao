@@ -128,6 +128,7 @@ class Index
             $sellerNickname=$request->post('sellerNickname');
             $sellerphone=$request->post('sellerphone');
             $sellerWechat=$request->post('sellerWechat');
+            $book_url=$request->post('book_url');
             try {
                 Book::create([
                 'bookid'=>$bookid,
@@ -142,6 +143,7 @@ class Index
                 'sellerNickname'=>$sellerNickname,
                 'sellerphone'=>$sellerphone,
                 'sellerWechat'=>$sellerWechat,
+                "book_url"=>$book_url,
             ]);
                 $res=1;
             } catch (Exception $ex) {
@@ -149,7 +151,7 @@ class Index
             }
         }
         //传回bookid检查是否正确
-        return json(["msg"=>$res,'errMsg'=>'商品文本信息上传成功','bookid'=>$bookid]);
+        return json(["msg"=>$res,'errMsg'=>'商品文本信息上传成功','bookid'=>$bookid,"book_url"=>$book_url]);
     }
     //上传图片到服务器
     public function upLoadImg(Request $request){

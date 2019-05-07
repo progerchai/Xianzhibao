@@ -9,17 +9,19 @@ Page({
     list_remind: '加载中',
     itemopen: false,
     hasFeed: false,
-    goodsname: '第一件商品',//商品名称
-    content: '我是商品详细介绍',//商品详细介绍
-    mes: '我是卖家留言',//卖家留言
-    price:12,//价格
-    sellerphone:'联系方式',//卖家联系方式
-    sellerWechat:'weixinhao',//卖家微信号
+    goodsname: '',//商品名称
+    content: '',//商品详细介绍
+    mes: '',//卖家留言
+    price:null,//价格
+    sellerphone:'',//卖家联系方式
+    sellerWechat:'',//卖家微信号
     info: '',
     showTopTips: false,
     TopTips: '',
   },
   onLoad: function () {
+    console.log("头部输出测试：");
+    console.log("*****" + username, openid, userid + "*****");
     that = this;
     that.setData({//初始化数据
       filepath: [],
@@ -139,10 +141,11 @@ Page({
     })
   },
   //商品文本信息上传，传入时间戳作为判断依据
-  goodsupload: function (uptime){
+  goodsupload: function (uptime,path){
+    var imgpath = "https://www.ffgbookbar.cn/BookStoreProject/public/uploads/" + app.globalData.openid + "/" + uptime + "/"+path;
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/Index/goodsUpload',
-      data: { openid: app.globalData.openid, uptime: uptime, goodsname: this.data.goodsname, content: this.data.content, mes: this.data.mes, price: this.data.price, sellerNickname: app.globalData.userInfo.nickName, sellerphone: this.data.sellerphone, sellerWechat: this.data.sellerWechat,},
+      data: { openid: app.globalData.openid, uptime: uptime, goodsname: this.data.goodsname, content: this.data.content, mes: this.data.mes, price: this.data.price, sellerNickname: app.globalData.userInfo.nickName, sellerphone: this.data.sellerphone, sellerWechat: this.data.sellerWechat, book_url:imgpath},
       method: 'POST',
       header: { "content-type": "application/x-www-form-urlencoded" },
       success: function (res) {
@@ -155,7 +158,7 @@ Page({
   upLoadImg:function(){
     var that = this;
     var tempFilePath = that.data.filepath;
-    var uptime = Date.parse(new Date()); 
+    var uptime = Date.parse(new Date())/1000; 
    for(var i = 0;i<tempFilePath.length;i++)
    {
      wx.uploadFile({
@@ -169,16 +172,18 @@ Page({
          "openid":app.globalData.openid,
          "uptime":uptime,
        },
-       success: function (res) {
-         console.log("图片传输成功" + JSON.stringify(res.data));
+       success: function (resoult) {
+         console.log("图片传输成功" + JSON.stringify(resoult.data));
          // 成功上传之后，调用商品内容传输函数 goodsupload()
-         that.goodsupload(uptime);
+         //temp作为中转站
+         var temp = JSON.parse(resoult.data);
+         that.goodsupload(uptime, temp.file);
        },
-       fail: function (res) {
-         console.log("图片传输失败" + JSON.stringify(res));
+       fail: function (resoult) {
+         console.log("图片传输失败" + JSON.stringify(resoult));
        },
-       complete: function (res) {
-         console.log("图片传输结束" + JSON.stringify(res));
+       complete: function (resoult) {
+         console.log("图片传输结束" + JSON.stringify(resoult));
        },
      })
    }
@@ -198,9 +203,13 @@ Page({
   },
   //提交表单
   submitForm: function (e) {
+    var that = this;
     var goodsname = e.detail.value.goodsname;
     var content = e.detail.value.content;
     var mes = e.detail.value.mes;
+    var price = parseFloat(e.detail.value.price); 
+    var sellerphone = e.detail.value.phone; 
+    var sellerWechat = e.detail.value.wechat; 
     //先进行表单非空验证
     if (goodsname == "") {
       this.setData({
@@ -213,10 +222,39 @@ Page({
         TopTips: '请输入商品详细介绍'
       });
     }
+    else if (!price){
+      console.log("对价格进行判断");
+      this.setData({
+        showTopTips: true,
+        TopTips: '请确保价格为数字'
+      });
+    }
+    else if (sellerphone.length!=11){
+      this.setData({
+        showTopTips: true,
+        TopTips: '请核对您的联系方式，以方便对方联系您'
+      });
+    }
+    else if (sellerWechat == "") {
+      this.setData({
+        showTopTips: true,
+        TopTips: '请输入您的微信号，以方便对方联系您'
+      });
+    }
+    else if (that.data.filepath.length==0) {
+      this.setData({
+        showTopTips: true,
+        TopTips: '请至少上传一张商品图片'
+      });
+    }
     else {
       that.setData({
-        isLoading: true,
-        isdisabled: true,
+        goodsname: goodsname,
+        content: content,
+        mes: mes,
+        price: price,
+        sellerphone: sellerphone ,
+        sellerWechat: sellerWechat ,
       })
       wx.showModal({
         title: '提示',
@@ -224,6 +262,10 @@ Page({
         success: function (res) {
           if (res.confirm) {
             that.upLoadImg();
+            that.setData({
+              isLoading: true,
+              isdisabled: true,
+            });
             // 延迟函数
             setTimeout(function () {
               wx.navigateBack({

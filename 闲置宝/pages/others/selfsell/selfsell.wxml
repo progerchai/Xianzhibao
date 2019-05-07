@@ -20,6 +20,9 @@
           <view>共一件商品 我的售价为：</view><view class='pirce'>¥{{item.discountprice}}</view>
         </view>
       </view>
+      <view class='description' style='height:30px;width:100%;text-align:center;color:#6E6E6E;font-size:16px;'>
+视时空科技-2019
+</view>
     </view>
 </view>
 

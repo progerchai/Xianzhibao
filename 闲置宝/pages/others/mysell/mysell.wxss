@@ -5,7 +5,10 @@
     font-size: 11pt;
     box-sizing: border-box;
 }
-
+.weui-toptips{
+    color: red;
+    font-weight: 600;
+}
 .item-labels{
     flex: 1;
 }
@@ -72,6 +75,7 @@
 .issues-panel{
     display: flex;
     flex-direction: column;
+    width: 100%;
     align-items: stretch;
     background-color: #fff;
     border-top: 1px solid #e5e5e5;
@@ -229,3 +233,45 @@
 .hidden {
   display: none;
 }
+/* 价格，联系方式，微信号wxss  start */
+.info-box{
+  display: block;
+  height: 220rpx;
+}
+.info{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  padding: 0 20rpx 0 20rpx;
+  text-align: center;
+}
+.info .info-left{
+  flex: 1;
+  display: flex;
+  height: 220rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.price{
+  flex: 1;
+  margin: 4rpx;
+}
+.phone{
+  flex: 1;
+  margin: 4rpx;
+}
+.wechat{
+  flex: 1;
+  margin: 4rpx;
+}
+.info-right{
+  flex: 3;
+}
+.info-right input{
+  border:  2rpx solid #000000;
+  border-radius: 10rpx;  
+  padding: 6rpx;
+  margin: 4rpx;
+}
+/* 价格，联系方式，微信号wxss  end */

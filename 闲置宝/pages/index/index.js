@@ -87,7 +87,7 @@ Page({
     //二手杂货前三个数据抓取
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
-      data: { isAll: 1, 'type': 5 },
+      data: { isAll: 1, 'type': 6 },
       method: 'GET',
       header: { "content-type": "application/json" },
       success: function (res) {
