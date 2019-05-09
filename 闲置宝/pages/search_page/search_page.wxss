@@ -1,4 +1,11 @@
 /* pages/search_page/search_page.wxss */
+/*分割线样式*/
+.divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 5rpx;
+ margin-top: 16rpx;
+}
 .searchbar-result{
     margin-top: 0;
     font-size: 14px;
@@ -26,6 +33,29 @@ flex-direction: row;
   border-radius: 25rpx;
   width: 80%;
   display: flex;
-justify-content: center;
-flex-direction: row;
+  justify-content: center;
+  flex-direction: row;
+}
+.title{
+  padding-left: 20rpx;
+  color: #595286;
+  font-size: 12pt;
+}
+.contentbox{
+  padding-left: 20rpx;
+}
+.content{
+  display: inline-block;
+  padding: 8rpx 4rpx 0 4rpx;
+  margin: 0 20rpx 5rpx 0;
+  background-color: #D3D3D3;
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 12pt;
+}
+.hotsearch{
+  padding: 20rpx;
+}
+.queryresult{
+  padding: 10rpx;
 }

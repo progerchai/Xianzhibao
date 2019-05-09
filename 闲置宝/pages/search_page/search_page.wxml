@@ -15,34 +15,25 @@
              </view>
         <!-- top搜索框结束 -->
         <!-- searchbar-result被修饰 -->
-        <!-- cell被修饰 -->
-        <!-- 内容开始 -->
-        <view wx:for="{{queryresult}}">
-          <view>{{item.name}}</view>
-          <view>{{item.introduce}}</view>
-        </view>
-        <!-- <view class="cells searchbar-result" wx:if="{{judge!= 0}}">
-            <navigator url="" class="cell" hover-class="cell_active">
-                <view class="cell__bd">
-                    <view>实时搜索文本0</view>
-                </view>
-            </navigator>
-            <navigator url="" class="cell" hover-class="cell_active">
-                <view class="cell__bd">
-                    <view>实时搜索文本1</view>
-                </view>
-            </navigator>
-            <navigator url="" class="cell" hover-class="cell_active">
-                <view class="cell__bd">
-                    <view>实时搜索文本2</view>
-                </view>
-            </navigator>
-            <navigator url="" class="cell" hover-class="cell_active">
-                <view class="cell__bd">
-                    <view>实时搜索文本3</view>
-                </view>
-            </navigator>
-        </view> -->
-        <!-- 内容结束 -->
-       </view>
+      <view class="divLine"></view>
+</view>
+
+  <!-- 内容开始 -->
+  <!-- 热门搜索 -->
+<view class='hotsearch'>
+  <view class='title'>热门搜索</view>
+  <view class='contentbox'>
+    <view class='content' wx:for="{{hotsearch}}">
+    <view catchtap='hotsearch' data-index='{{index}}'>{{item.name}}</view>
+  </view>
+  </view>
+</view>
+
+<view class='queryresult'>
+  <view wx:for="{{queryresult}}">
+    <view>{{item.name}}</view>
+    <view>{{item.introduce}}</view>
+  </view>
+</view>
+  <!-- 内容结束 -->
 </view>

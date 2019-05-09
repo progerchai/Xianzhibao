@@ -10,6 +10,7 @@ use app\store\model\Comments;
 use app\store\model\Shoppingcar;
 use app\store\model\Collection;
 use app\store\model\Orders;
+use app\store\model\Hotsearch;
 use think\Request;
 
 class Index
@@ -294,8 +295,16 @@ class Index
             $res=Shoppingcar::where("openid","eq",$request->get("openid"))->select();
         }
         return json($res);
-    }
+      }
     
+    public function showHotSearch(Request $request){
+        $res=[];
+        if($request->isGet()){
+            $res=Hotsearch::where("id","neq",0)->select();
+        }
+        return json($res);
+    }
+
     public function addCollect(Request $request) {
         $res=0;
         if($request->isPost()){
@@ -388,8 +397,8 @@ class Index
 
     public function getOpenid(Request $request){ // $code为小程序提供
         $code=$request->get("code");
-        $appid = 'wx8823790438934868'; // 小程序APPID
-        $secret = '475a41c77c2eaa8a0fb31094ae09656b'; // 小程序secret
+        $appid = 'wxe365698157629a55'; // 小程序APPID
+        $secret = 'a1a74ed22d802514dfa0c263393b7493'; // 小程序secret
         $url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' . $appid . '&secret='.$secret.'&js_code='.$code.'&grant_type=authorization_code';        
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

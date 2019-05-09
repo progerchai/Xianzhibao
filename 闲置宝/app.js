@@ -31,6 +31,7 @@ App({
                 }
                 else{
                   //进行注册操作
+                  console.log("**注册测试***",openid, getApp().globalData.userInfo.nickName, getApp().globalData.userInfo.avatarUrl);
                   wx.request({
                     url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/register',
                     data: { openid: openid, nickname: getApp().globalData.userInfo.nickName, headportrait_url:getApp().globalData.userInfo.avatarUrl},
