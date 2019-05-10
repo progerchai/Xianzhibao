@@ -1,4 +1,5 @@
 var time = require('../../../utils/util.js');
+var app = getApp();
 Page({
   data: {
     iscollection:false,
@@ -8,7 +9,8 @@ Page({
     inputmessage:false,
     // 书本信息如下：
   bookmsg:[],
-  comments:'',
+  comments:[],
+  comment_contant:"",
     // banner
     imgUrls: [],
     indicatorDots: true, //是否显示面板指示点
@@ -16,7 +18,28 @@ Page({
     interval: 3000, //自动切换时间间隔,3s 
     duration: 1000, //  滑动动画时长1s
   },
+  fresh: function (bookid){
+    var that = this;
+    // 获取评论,用来刷新，第一次页面初始加载时无法得到执行结果
+    wx.request({
+      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showComment',
+      data: { isUser: 0, bookid: bookid },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: { "content-type": "application/json" }, // 设置请求的 header
+      success: function (res) {
+        const temp = res.data;
+        for (var i = 0; i < res.data.length; i++) {
+          temp[i].comtime = time.formatTimeTwo(temp[i].comtime, "Y/M/D h:m:s");
+        }
+        temp.reverse();//评论逆序输出
+        that.setData({
+          comments: temp,
+        });
+      }
+    }); 
+  },
   onLoad:function(options){
+    console.log("onload加载刷新");
     var that = this;
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
@@ -33,7 +56,6 @@ Page({
           [bookurl1]: res.data[0].pic1_url,
           [bookurl2]: res.data[0].pic2_url,
           [bookurl3]: res.data[0].pic3_url,
-         
         });
         console.log("获取数据成功")
       },
@@ -44,24 +66,7 @@ Page({
         // complete
       }
     });
-
-// 获取评论
-    wx.request({
-      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showComment',
-      data: { isUser: 0, bookid: options.bookid },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { "content-type": "application/json" }, // 设置请求的 header
-      success: function (res) {
-        const temp = res.data;
-        for(var i = 0;i<res.data.length;i++)
-        {
-          temp[i].comtime = time.formatTimeTwo(temp[i].comtime, "Y/M/D h:m:s");
-        }
-        that.setData({
-          comments: temp,
-        });
-      }
-    });
+    that.fresh(options.bookid);
   },
   collection:function(){
     var that = this;
@@ -132,7 +137,6 @@ Page({
   //预览图片
   previewImage: function (e) {
     var current = e.target.dataset.src;
-
     wx.previewImage({
       current: current, // 当前显示图片的http链接  
       urls: this.data.imgUrls // 需要预览的图片http链接列表  
@@ -153,25 +157,37 @@ Page({
   detailinfomation:function(){
     this.showSelectInfo();
   },
-  addComments:function(){
+  addcomment:function(e){
+    var that = this;
+    var comment_contant=e.detail.value;
+    that.setData({
+      comment_contant: comment_contant
+    });
+  },
+  submitcomment:function(){
+    var that = this;
+    var timestamp = Date.parse(new Date())/1000;
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/addComment',
-      data: { openid: getApp().globalData.openid, bookid: this.data.bookmsg.bookid, comments: this.data.comments },
+      data: { openid: getApp().globalData.openid, bookid: that.data.bookmsg.bookid, comments: that.data.comment_contant, nickName: app.globalData.userInfo.nickName, avatarUrl: app.globalData.userInfo.avatarUrl},
       method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
       success: function (res) {
-        console.log(res);
+        console.log(res.data);
         wx.showToast({
-          title: '加入购物车成功',
+          title: '留言成功',
           icon: 'success',
           duration: 2000
         });
+        that.closemask();
+        that.fresh(that.data.bookmsg.bookid);
       }
     });
   },
-  addCar: function () {
+  addcommets: function () {
     //添加至购物车，备用
     var that = this;
+    console.log();
     that.setData({
       inputmessage:true,
     });

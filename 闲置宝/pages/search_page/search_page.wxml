@@ -24,16 +24,33 @@
   <view class='title'>热门搜索</view>
   <view class='contentbox'>
     <view class='content' wx:for="{{hotsearch}}">
-    <view catchtap='hotsearch' data-index='{{index}}'>{{item.name}}</view>
-  </view>
+      <view catchtap='hotsearch' data-index='{{index}}'>{{item.name}}</view>
+    </view>
   </view>
 </view>
 
-<view class='queryresult'>
-  <view wx:for="{{queryresult}}">
-    <view>{{item.name}}</view>
-    <view>{{item.introduce}}</view>
+<view class='matchsearch'>
+  <view class='title'>相关搜索</view>
+  <view class='template'>
+    <view wx:for="{{queryresult}}">
+      <view class='template-shoplist' catchtap='matchsearch' data-index='{{index}}'>
+        <view class='image-left'><image src='{{item.book_url}}'></image></view>
+        <view class='shoplist-right'>
+          <view class='right-content'>
+            {{item.name}}
+            {{item.introduce}}
+          </view>
+          <view class='right-price'>
+            <view class='price'>¥{{item.discountprice}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{queryresult.length==0}}">
+      {{sorrytext}}
+    </view>
   </view>
 </view>
+
   <!-- 内容结束 -->
 </view>

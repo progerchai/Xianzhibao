@@ -130,3 +130,33 @@ text {display: block;height: 60rpx;line-height: 60rpx;}
 .box-container-right>view{
   flex: 1;
 }
+.nocoments{
+  font-size: 12pt;
+  text-align: center;
+}
+.issues-textarea{
+  width: 90%;
+  margin: 5%;
+  border: 1px solid #70bcf6;
+  height: 200rpx;
+}
+.box-alert2{
+  width: 560rpx;
+  height: 400rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 320rpx auto;
+  padding-top: 1rpx;
+}
+.submit{
+  width: 300rpx;
+  height: 80rpx;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.submitview{
+  display: flex;
+  justify-content: center;
+}

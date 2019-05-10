@@ -5,6 +5,7 @@ Page({
     judge:0,
     queryresult:null,
     hotsearch:[],
+    sorrytext:"",
   },
   onLoad:function(){
     var that = this;
@@ -42,7 +43,12 @@ Page({
       success: function (res) {
         // console.log(res.data);
         that.setData({
+          sorrytext:"",
           queryresult: res.data
+        });
+        if(res.data.length==0)
+        that.setData({
+          sorrytext:"对不起，没有找到客官想要的宝贝哦！",
         });
       }
     });
@@ -73,5 +79,17 @@ Page({
       inputVal: inputVal,
     });
     that.searchStart();
+  },
+  matchsearch:function(e){
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    var id = that.data.queryresult[index].bookid;
+    wx.navigateTo({
+      url: '/pages/others/details/details?bookid=' + id,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+    console.log(id);
   }
 });

@@ -187,6 +187,7 @@ class Index
                 'comments' =>$comments,
                 'comtime'=>$comtime,
                 'openid' => $openid,
+                'evaluate'=1;//默认值为1，用途为产品评价，目前产品为短期自由交易，无用途
                 'nickName' => $nickName,
                 'avatarUrl' => $avatarUrl, ]);
                 $res=1;

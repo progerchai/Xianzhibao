@@ -109,6 +109,7 @@
         </view>
         <!-- 买家询问end -->
        </view>
+       <view class='nocoments' wx:if="{{comments.length==0}}">暂未有用户评论，快抢沙发吧！</view>
     </view>
   </view>
     <view class="separate"></view>
@@ -120,7 +121,7 @@
   <image bindtap="toHome" src="../../../images/home.png" />
   <view class="line_nav"></view>
   <image bindtap="toSelf" src="../../../images/self.png" />
-  <button class="button-green" bindtap="addCar" formType="submit">留言咨询</button>
+  <button class="button-green" bindtap="addcommets" formType="submit">留言咨询</button>
   <button class="button-red" bindtap="openmask" formType="submit">与卖家沟通</button>
 </view>
 
@@ -214,9 +215,9 @@
 <!-- 遮罩层1结束 -->
 <!-- 遮罩层2开始 -->
 <view class='box' bindtap='closemask' wx:if="{{inputmessage}}">
-  <view class='box-alert' catchtap='nullfunction'>
-
-<textarea class="issues-textarea" cursor-spacing="50" placeholder="请输入留言内容" name="comments" value="{{comments}}"></textarea>
+  <view class='box-alert2' catchtap='nullfunction'>
+  <view><textarea class="issues-textarea" placeholder="请输入留言内容" bindinput='addcomment'></textarea></view>
+  <view class='submitview'><button class='submit' catchtap='submitcomment'>提交留言</button></view>
   </view>
 </view>
 <!-- 遮罩层2结束 -->
