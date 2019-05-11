@@ -28,7 +28,7 @@ Page({
       header: { "content-type": "application/json" }, // 设置请求的 header
       success: function (res) {
         const temp = res.data;
-        for (var i = 0; i < res.data.length; i++) {
+          for (var i = 0; i < res.data.length; i++) {
           temp[i].comtime = time.formatTimeTwo(temp[i].comtime, "Y/M/D h:m:s");
         }
         temp.reverse();//评论逆序输出

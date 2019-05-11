@@ -62,21 +62,11 @@
   <text>详细参数</text>
   <text class='iconfont icon-youjiantou'></text>
   </view>
-  
   <view class="separate"></view>
-  <view class='comments'>
-    <text>商品评价</text>
-    <text class="text-remark">东西还可以，好评~</text>
-    <view class='commentdetail' wx:for="{{comments}}">
-      <text >{{item.comment}}</text>
-    </view>
-  </view>
-  <view class="separate"></view>
-  <view class="temp"></view>
 </view>
-<view class='notbookclass' wx:else>
+<view class='notbookclass'>
   <view class='sellersaids'>
-    <text style='margin-left:10rpx;'>卖家狠话</text>
+    <text style='margin-left:20rpx;'>卖家狠话</text>
     <view class='said'>
       <view class='sellersaid'>
         <text>{{bookmsg.sellersaid}}</text>
@@ -85,14 +75,14 @@
   </view>
   <view class="separate"></view>
   <view class='buyersaids'>
-    <text style='margin-left:10rpx;'>买家咨询</text>
+    <text style='margin-left:20rpx;'>买家咨询</text>
     <view>
        <view class='buyerask' wx:for="{{comments}}">
         <!-- 买家询问start -->
         <view class='template'>
           <view class='author_list' style="font-size:26rpx;margin-bottom:26rpx;color:#999999;">
           <image class="userinfo-avatar" src="{{item.avatarUrl}}" mode="cover"></image>
-            <view class='text'><a style="font-weight:700;">{{item.nickName}}</a> 评论于
+            <view class='text'><a style="font-weight:700;">{{item.nickName}}</a>留言于
               <p>{{item.comtime}}</p></view>
           </view>
             <ul class="commentList">

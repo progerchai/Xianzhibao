@@ -64,26 +64,26 @@ flex-direction: row;
 .list{
 width: 100%;
 height: 380rpx;
-color: #ffffff;
+color: black;
 }
  .resoutuijian{
    margin-top: 10rpx;
-  background-color: #FAB9B7;
+  background-color: #c1c1c1;
 }
  .jingpinhaoshu{
-  background-color: #E8B9FD;
+  background-color: #fff;
 }
 .xinshuremai{
-  background-color: #FFC595;
+  background-color: #c1c1c1;
 }
 .jikemiaosha{
-  background-color: #F7EEC3;
+  background-color: #fff;
 }
 .ershoujiushu{
-  background-color: #BBE7C4;
+  background-color: #c1c1c1;
 }
 .ershouzahuo{
-  background-color: #BBD2F4;
+  background-color: #fff;
 }
 .list .content_text{
 width: 100%;

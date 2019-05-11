@@ -1,9 +1,7 @@
 <?php
 namespace app\store\controller;
-
 use think\Controller;
 use think\Db;
-
 use app\store\model\User;
 use app\store\model\Book;
 use app\store\model\Comments;
@@ -12,7 +10,6 @@ use app\store\model\Collection;
 use app\store\model\Orders;
 use app\store\model\Hotsearch;
 use think\Request;
-
 class Index
 {
     public function index(){
@@ -170,7 +167,6 @@ class Index
           }
        } 
     }
-
     public function addComment(Request $request){
         $res=0;
         if($request->isPost()){
@@ -187,7 +183,7 @@ class Index
                 'comments' =>$comments,
                 'comtime'=>$comtime,
                 'openid' => $openid,
-                'evaluate'=1;//默认值为1，用途为产品评价，目前产品为短期自由交易，无用途
+                'evaluate'=>1;//默认值为1，用途为产品评价，目前产品为短期自由交易，无用途
                 'nickName' => $nickName,
                 'avatarUrl' => $avatarUrl, ]);
                 $res=1;
@@ -219,14 +215,14 @@ class Index
             $isUser=$request->get('isUser');
             if(!$isUser){
                 $bookid = request()->get("bookid");
-		$booklist = explode(",",$bookid);
-		for($i = 0;$i<count($booklist);$i++)
-		{
- 			$temp= Book::where("bookid","eq",$booklist[$i])->select();
-			if($temp){
-				$res[$i]= $temp[0];
-			}
-		}
+    $booklist = explode(",",$bookid);
+    for($i = 0;$i<count($booklist);$i++)
+    {
+      $temp= Book::where("bookid","eq",$booklist[$i])->select();
+      if($temp){
+        $res[$i]= $temp[0];
+      }
+    }
                
             } else {
                 $openid=request()->get("openid");
@@ -263,8 +259,7 @@ class Index
         if($request->isPost()){
           $openid=$request->post('openid');
           $bookid=$request->post('bookid');
-	 $boughtnumber=$request->post('boughtnumber');
-
+   $boughtnumber=$request->post('boughtnumber');
           if(Shoppingcar::where("openid","eq",$openid)->where("bookid","eq",$bookid)->where("boughtnumber","eq",$boughtnumber)->count()){
               $res=-1;
           } else {
@@ -305,7 +300,6 @@ class Index
         }
         return json($res);
     }
-
     public function addCollect(Request $request) {
         $res=0;
         if($request->isPost()){
@@ -386,16 +380,14 @@ class Index
         }
          return json($res);
     }
-
     public function tryit(Request $request){
         $res=[];
         if($request->isGet()){
             $openid=$request->get("openid");
-	    $res=Db::table('ORDER')->where('openid',1)->find();
+      $res=Db::table('ORDER')->where('openid',1)->find();
          }
          return json($res);
     }
-
     public function getOpenid(Request $request){ // $code为小程序提供
         $code=$request->get("code");
         $appid = 'wxe365698157629a55'; // 小程序APPID
@@ -412,6 +404,5 @@ class Index
         curl_close($curl);
         return json($res); // 这里是获取到的信息
     }
-
      
 }

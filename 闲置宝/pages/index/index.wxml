@@ -44,7 +44,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.name}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.introduce}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
@@ -65,7 +65,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.name}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.introduce}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
@@ -85,7 +85,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.name}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.introduce}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
@@ -105,7 +105,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.name}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.introduce}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
@@ -130,7 +130,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.name}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.introduce}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
@@ -150,7 +150,7 @@
                   <image class='example_pic' src="{{item.book_url}}"></image>
             </view>
             <view class='introduce'>
-            <text>{{item.name}}{{item.author}}{{item.information}}</text>
+            <text>{{item.name}}{{item.author}}{{item.introduce}}</text>
             <text class="sku-price">￥{{item.discountprice}}</text>
             </view>
             </view>
