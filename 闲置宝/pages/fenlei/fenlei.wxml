@@ -18,8 +18,27 @@
   <view class="right_content">
     <scroll-view bindscrolltolower="getMore" scroll-y="true" scroll-top="{{scrolltop}}" style="height:{{deviceHeight}}px;" class="tab_panel">
       <view>
+      <!-- 二手专区 -->
+      <view class='ershouzhuanqu' wx:if="{{activeIndex==0}}">
+    <view class="template" wx:for="{{ershouzhuanqu}}" wx:key="{{item.bookid}}">  
+      <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
+      <view class="productImg">
+        <image class='image' src="{{item.book_url}}" mode='aspectFit'></image>
+      </view>
+      <view class="productInfo">
+        <view class="productTitle">{{item.name}}{{item.press}}{{item.author}}{{item.publication_date}}{{item.introduce}}</view>
+        <view class='price'>
+        <text class="productPrice">￥{{item.discountprice}}</text>
+        <text class="productOldPrice" wx:if="{{item.pricing!=null}}">￥{{item.pricing}}</text>
+        </view>
+      </view>
+      </view>
+      <view class='space'></view>
+  </view>
+  </view>
+<!-- 二手专区结束 -->
       <!-- 热搜推荐 -->
-      <view class='resoutuijian' wx:if="{{activeIndex==0}}">
+      <view class='resoutuijian' wx:if="{{activeIndex==1}}">
     <view class="template" wx:for="{{resoutuijian}}" wx:key="{{item.bookid}}" >  
       <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
       <view class="productImg">
@@ -29,7 +48,7 @@
         <view class="productTitle">{{item.name}}{{item.press}}{{item.author}}{{item.publication_date}}{{item.introduce}}</view>
         <view class='price'>
         <text class="productPrice">￥{{item.discountprice}}</text>
-        <text class="productOldPrice" wx:if="{{item.pricing!=' '}}">￥{{item.pricing}}</text>
+        <text class="productOldPrice"  wx:if="{{item.pricing!=null}}">￥{{item.pricing}}</text>
         </view>
       </view>
       </view>
@@ -38,7 +57,7 @@
   </view>
 <!-- 热搜推荐结束 -->
 <!-- 精品好书 -->
-      <view class='jingpinhaoshu' wx:if="{{activeIndex==1}}">
+      <view class='jingpinhaoshu' wx:if="{{activeIndex==2}}">
     <view class="template" wx:for="{{jingpinhaoshu}}" wx:key="{{item.bookid}}"> 
       <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
       <view class="productImg">
@@ -48,7 +67,7 @@
         <view class="productTitle">{{item.name}}{{item.press}}{{item.author}}{{item.publication_date}}{{item.introduce}}</view>
         <view class='price'>
         <text class="productPrice">￥{{item.discountprice}}</text>
-        <text class="productOldPrice" wx:if="{{item.pricing!=' '}}">￥{{item.pricing}}</text>
+        <text class="productOldPrice" wx:if="{{item.pricing!=null}}">￥{{item.pricing}}</text>
         </view>
       </view>
       </view>
@@ -57,7 +76,7 @@
   </view>
 <!-- 精品好书结束 -->
 <!-- 新书热卖 -->
-      <view class='xinshuremai' wx:if="{{activeIndex==2}}">
+      <view class='xinshuremai' wx:if="{{activeIndex==3}}">
     <view class="template" wx:for="{{xinshuremai}}" wx:key="{{item.bookid}}">  
       <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
       <view class="productImg">
@@ -67,7 +86,7 @@
         <view class="productTitle">{{item.name}}{{item.press}}{{item.author}}{{item.publication_date}}{{item.introduce}}</view>
         <view class='price'>
         <text class="productPrice">￥{{item.discountprice}}</text>
-        <text class="productOldPrice" wx:if="{{item.pricing!=' '}}">￥{{item.pricing}}</text>
+        <text class="productOldPrice"  wx:if="{{item.pricing!=null}}">￥{{item.pricing}}</text>
         </view>
       </view>
       </view>
@@ -76,7 +95,7 @@
   </view>
 <!-- 新书热卖结束 -->
 <!-- 即刻秒杀 -->
-      <view class='jikemiaosha' wx:if="{{activeIndex==3}}">
+      <view class='jikemiaosha' wx:if="{{activeIndex==4}}">
    <view class="template" wx:for="{{jikemiaosha}}" wx:key="{{item.bookid}}">  
       <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
       <view class="productImg">
@@ -86,7 +105,7 @@
         <view class="productTitle">{{item.name}}{{item.press}}{{item.author}}{{item.publication_date}}{{item.introduce}}</view>
         <view class='price'>
         <text class="productPrice">￥{{item.discountprice}}</text>
-        <text class="productOldPrice" wx:if="{{item.pricing!=' '}}">￥{{item.pricing}}</text>
+        <text class="productOldPrice"  wx:if="{{item.pricing!=null}}">￥{{item.pricing}}</text>
         </view>
       </view>
       </view>
@@ -94,44 +113,6 @@
   </view>
   </view>
 <!-- 即刻秒杀结束 -->
-<!-- 二手旧书 -->
-      <view class='ershoujiushu' wx:if="{{activeIndex==4}}">
-    <view class="template" wx:for="{{ershoujiushu}}" wx:key="{{item.bookid}}">  
-      <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
-      <view class="productImg">
-        <image class='image' src="{{item.book_url}}" mode='aspectFit'></image>
-      </view>
-      <view class="productInfo">
-        <view class="productTitle">{{item.name}}{{item.press}}{{item.author}}{{item.publication_date}}{{item.introduce}}</view>
-        <view class='price'>
-        <text class="productPrice">￥{{item.discountprice}}</text>
-        <text class="productOldPrice" wx:if="{{item.pricing!=' '}}">￥{{item.pricing}}</text>
-        </view>
-      </view>
-      </view>
-      <view class='space'></view>
-  </view>
-  </view>
-<!-- 二手旧书结束 -->
-<!-- 二手杂货 -->
-      <view class='ershouzahuo' wx:if="{{activeIndex==5}}">
-    <view class="template" wx:for="{{ershouzahuo}}" wx:key="{{item.bookid}}">  
-      <view class='item' data-bookid="{{item.bookid}}" data-type='{{item.type}}' bindtap='gotodetail'>
-      <view class="productImg">
-        <image class='image' src="{{item.book_url}}" mode='aspectFit'></image>
-      </view>
-      <view class="productInfo">
-        <view class="productTitle">{{item.name}}{{item.press}}{{item.author}}{{item.publication_date}}{{item.introduce}}</view>
-        <view class='price'>
-        <text class="productPrice">￥{{item.discountprice}}</text>
-        <text class="productOldPrice" wx:if="{{item.pricing!=' '}}">￥{{item.pricing}}</text>
-        </view>
-      </view>
-      </view>
-      <view class='space'></view>
-  </view>
-  </view>
-<!-- 二手杂货结束 -->
       </view>
     </scroll-view>
   </view>

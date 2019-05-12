@@ -1,3 +1,4 @@
+import regeneratorRuntime from '../../../regenerator-runtime/runtime.js';
 Page({
   data: {
     iscollections:true,
@@ -15,23 +16,11 @@ Page({
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
       success: function (res) {
+        var booklist = res.data.reverse();
         that.setData({
-          booklist: res.data
+          booklist: booklist,
         });
-        for (var i = 0; i < res.data.length; i++) {
-          wx.request({
-            url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
-            data: { isUser: 0, bookid: res.data[i].bookid },
-            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-            header: { "content-type": "application/json" }, // 设置请求的 header
-            success: function (e) {
-              that.data.carts.push(e.data[0]);
-              that.setData({
-                carts: that.data.carts,
-              });
-            }
-          });
-        }
+        that.show(booklist);
            console.log(that.data.booklist.length);
               if(that.data.booklist.length==0)
               {
@@ -47,6 +36,32 @@ Page({
               }
       }
     });
+  },
+  async show(booklist){
+    for (var i = 0; i < booklist.length; i++)
+    {
+      const doit = await this.showcollect(booklist[i].bookid);
+    }
+  },
+  showcollect: function (bookid){
+    var that = this;
+    return new Promise((resolve, reject) =>{
+      wx.request({
+        url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/getInformation',
+        data: { isUser: 0, bookid: bookid },
+        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        header: { "content-type": "application/json" }, // 设置请求的 header
+        success: function (e) {
+          that.data.carts.push(e.data[0]);
+          that.setData({
+            carts: that.data.carts,
+          });
+          resolve(e);
+        }
+      });
+    })
+      
+
   },
   showModal:function(e){
     console.log(e);

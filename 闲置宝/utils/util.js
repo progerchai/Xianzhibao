@@ -31,7 +31,8 @@ function formatTimeTwo(number, format) {
   }
   return format;
 }
+
 module.exports = {
   formatTime: formatTime,
-  formatTimeTwo: formatTimeTwo  
+  formatTimeTwo: formatTimeTwo,
 }

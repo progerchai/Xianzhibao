@@ -70,6 +70,34 @@ App({
             }
           })
         }
+        else if (res.authSetting['scope.userInfo'] === false) { // 授权弹窗被拒绝
+          wx.openSetting({
+            success: res => {
+              console.log(res)
+            },
+            fail: res => {
+              console.log(res)
+            }
+          })
+        } else { // 没有弹出过授权弹窗
+          wx.getUserInfo({
+            success: res => {
+              console.log(res)
+              this.setUserInfoAndNext(res)
+            },
+            fail: res => {
+              console.log(res)
+              wx.openSetting({
+                success: res => {
+                  console.log(res)
+                },
+                fail: res => {
+                  console.log(res)
+                }
+              })
+            }
+          })
+        }
       }
     })
   },

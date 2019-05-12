@@ -127,6 +127,13 @@ class Index
             $sellerphone=$request->post('sellerphone');
             $sellerWechat=$request->post('sellerWechat');
             $book_url=$request->post('book_url');
+            $path=$request->post('path');
+            $pathlist = explode("@#$%*", $path);
+            $length = count($pathlist);
+            for($i = $length; $i <4 ; $i++)
+            {
+              $pathlist[$i] = "https://www.ffgbookbar.cn/BookStoreProject/public/uploads/images/blank.png";
+            }
             try {
                 Book::create([
                 'bookid'=>$bookid,
@@ -141,7 +148,10 @@ class Index
                 'sellerNickname'=>$sellerNickname,
                 'sellerphone'=>$sellerphone,
                 'sellerWechat'=>$sellerWechat,
-                "book_url"=>$book_url,
+                "book_url"=>$book_url.$pathlist[1],
+                "pic1_url"=>$book_url.$pathlist[1],
+                "pic2_url"=>$book_url.$pathlist[2],
+                "pic3_url"=>$book_url.$pathlist[3],
             ]);
                 $res=1;
             } catch (Exception $ex) {
@@ -149,7 +159,7 @@ class Index
             }
         }
         //传回bookid检查是否正确
-        return json(["msg"=>$res,'errMsg'=>'商品文本信息上传成功','bookid'=>$bookid,"book_url"=>$book_url]);
+        return json(["msg"=>$res,'errMsg'=>'商品文本信息上传成功','bookid'=>$bookid,"book_url"=>$book_url,"pathlist"=>$pathlist]);
     }
     //上传图片到服务器
     public function upLoadImg(Request $request){
@@ -183,7 +193,7 @@ class Index
                 'comments' =>$comments,
                 'comtime'=>$comtime,
                 'openid' => $openid,
-                'evaluate'=>1;//默认值为1，用途为产品评价，目前产品为短期自由交易，无用途
+                'evaluate'=>1,//默认值为1，用途为产品评价，目前产品为短期自由交易，无用途
                 'nickName' => $nickName,
                 'avatarUrl' => $avatarUrl, ]);
                 $res=1;

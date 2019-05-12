@@ -79,12 +79,10 @@ color: black;
 .jikemiaosha{
   background-color: #fff;
 }
-.ershoujiushu{
-  background-color: #c1c1c1;
-}
-.ershouzahuo{
+.ershouzhuanqu{
   background-color: #fff;
 }
+
 .list .content_text{
 width: 100%;
 margin-bottom: 5rpx;

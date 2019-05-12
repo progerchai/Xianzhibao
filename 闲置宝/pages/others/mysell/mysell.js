@@ -1,3 +1,4 @@
+import regeneratorRuntime from '../../../regenerator-runtime/runtime.js';
 //获取应用实例
 var app = getApp();
 var that;
@@ -15,13 +16,12 @@ Page({
     price:null,//价格
     sellerphone:'',//卖家联系方式
     sellerWechat:'',//卖家微信号
+    imglist:"",
     info: '',
     showTopTips: false,
     TopTips: '',
   },
   onLoad: function () {
-    console.log("头部输出测试：");
-    console.log("*****" + username, openid, userid + "*****");
     that = this;
     that.setData({//初始化数据
       filepath: [],
@@ -60,7 +60,6 @@ Page({
 
   //上传图片
   uploadPic: function () {
-    var that = this;
     if (that.data.filepath.length == 3) {
       wx.showModal({
         title: '提示',
@@ -130,7 +129,6 @@ Page({
   //删除图片
   clearPic: function (event) {//删除图片
     console.log(event);
-    var that = this;
     var index = event.currentTarget.dataset.index;
     var filepath = that.data.filepath;
     filepath.splice(index, 1);
@@ -142,10 +140,10 @@ Page({
   },
   //商品文本信息上传，传入时间戳作为判断依据
   goodsupload: function (uptime,path){
-    var imgpath = "https://www.ffgbookbar.cn/BookStoreProject/public/uploads/" + app.globalData.openid + "/" + uptime + "/"+path;
+    var imgpath = "https://www.ffgbookbar.cn/BookStoreProject/public/uploads/" + app.globalData.openid + "/" + uptime + "/";
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/Index/goodsUpload',
-      data: { openid: app.globalData.openid, uptime: uptime, goodsname: this.data.goodsname, content: this.data.content, mes: this.data.mes, price: this.data.price, sellerNickname: app.globalData.userInfo.nickName, sellerphone: this.data.sellerphone, sellerWechat: this.data.sellerWechat, book_url:imgpath},
+      data: { openid: app.globalData.openid, uptime: uptime, goodsname: this.data.goodsname, content: this.data.content, mes: this.data.mes, price: this.data.price, sellerNickname: app.globalData.userInfo.nickName, sellerphone: this.data.sellerphone, sellerWechat: this.data.sellerWechat, book_url:imgpath,path:path},
       method: 'POST',
       header: { "content-type": "application/x-www-form-urlencoded" },
       success: function (res) {
@@ -154,44 +152,59 @@ Page({
       }
     });
   },
-  // 图片上传服务器端
-  upLoadImg:function(){
-    var that = this;
+
+  async upload(){
     var tempFilePath = that.data.filepath;
-    var uptime = Date.parse(new Date())/1000; 
-   for(var i = 0;i<tempFilePath.length;i++)
-   {
+    var uptime = Date.parse(new Date()) / 1000; 
+      for (var i = 0; i < tempFilePath.length; i++) {
+        const doit = await this.upLoadImg(tempFilePath[i],uptime);
+      }
+   // console.log("that.data.imglist"+that.data.imglist);//图片地址片段测试
+    that.goodsupload(uptime,that.data.imglist);
+
+  },
+  // 图片上传服务器端
+  upLoadImg: function (tempFilePath, uptime){
+    //三张以内图片上传
+   return new Promise((resolve,reject)=>{
      wx.uploadFile({
        url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/Index/upLoadImg',
-       filePath: tempFilePath[i] + '',
+       filePath: tempFilePath + '',
        name: 'file',
        header: {
          "Content-Type": "multipart/form-data"
        },
        formData: {
-         "openid":app.globalData.openid,
-         "uptime":uptime,
+         "openid": app.globalData.openid,
+         "uptime": uptime,
        },
        success: function (resoult) {
-         console.log("图片传输成功" + JSON.stringify(resoult.data));
-         // 成功上传之后，调用商品内容传输函数 goodsupload()
+         //console.log("图片传输成功" + JSON.stringify(resoult.data));//单张图片上传成功，从服务器端返回数据
          //temp作为中转站
          var temp = JSON.parse(resoult.data);
-         that.goodsupload(uptime, temp.file);
+         var imglist = that.data.imglist;
+         imglist = imglist + "@#$%*" + temp.file;
+         that.setData({
+           imglist: imglist,
+         });
+         console.log("上传结果为："+resoult.data);
+         resolve(resoult);
        },
        fail: function (resoult) {
          console.log("图片传输失败" + JSON.stringify(resoult));
+         reject(resoult);
        },
        complete: function (resoult) {
          console.log("图片传输结束" + JSON.stringify(resoult));
        },
      })
-   }
+   
+ })
+
   },
 
   //表单验证
   showTopTips: function () {
-    var that = this;
     this.setData({
       showTopTips: true
     });
@@ -203,7 +216,6 @@ Page({
   },
   //提交表单
   submitForm: function (e) {
-    var that = this;
     var goodsname = e.detail.value.goodsname;
     var content = e.detail.value.content;
     var mes = e.detail.value.mes;
@@ -223,7 +235,6 @@ Page({
       });
     }
     else if (!price){
-      console.log("对价格进行判断");
       this.setData({
         showTopTips: true,
         TopTips: '请确保价格为数字'
@@ -258,10 +269,11 @@ Page({
       })
       wx.showModal({
         title: '提示',
-        content: '是否确认提交反馈',
+        content: '是否确认提交商品信息',
         success: function (res) {
           if (res.confirm) {
-            that.upLoadImg();
+            //执行上传操作，异步async
+            that.upload()
             that.setData({
               isLoading: true,
               isdisabled: true,

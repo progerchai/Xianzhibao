@@ -5,30 +5,27 @@ Page({
     tabs: [
       {
         id: 1,
-        tabName: '热搜推荐'
+        tabName: '二手专区'
       }, {
         id: 2,
-        tabName: '精品好物'
+        tabName: '热搜推荐'
       }, {
         id: 3,
-        tabName: '新品热卖'
+        tabName: '精品好物'
       }, {
         id: 4,
-        tabName: '即刻秒杀'
+        tabName: '新品热卖'
       }, {
         id: 5,
-        tabName: '二手旧书'
-      }, {
-        id: 6,
-        tabName: '二手杂货'
+        tabName: '即刻秒杀'
       }
     ],
+    ershouzhuanqu: null,
     resoutuijian:null,
     jingpinhaoshu:null,
     xinshuremai:null,
     jikemiaosha:null,
-    ershoujiushu:null,
-    ershouzahuo:null,
+
   },
   search_page: function () {
     wx.navigateTo({
@@ -56,8 +53,9 @@ Page({
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
       success: function (res) {
+        var resoutuijian = res.data.reverse();
        that.setData({
-         resoutuijian:res.data,
+         resoutuijian: resoutuijian,
        });
       }
     });
@@ -68,8 +66,9 @@ Page({
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
       success: function (res) {
+        var jingpinhaoshu = res.data.reverse();
         that.setData({
-          jingpinhaoshu: res.data,
+          jingpinhaoshu: jingpinhaoshu,
         });
       }
     });
@@ -80,8 +79,9 @@ Page({
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
       success: function (res) {
+        var xinshuremai = res.data.reverse();
         that.setData({
-          xinshuremai: res.data,
+          xinshuremai: xinshuremai,
         });
       }
     });
@@ -92,8 +92,9 @@ Page({
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
       success: function (res) {
+        var jikemiaosha = res.data.reverse();
         that.setData({
-          jikemiaosha: res.data,
+          jikemiaosha: jikemiaosha,
         });
       }
     });
@@ -104,20 +105,9 @@ Page({
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: { "content-type": "application/json" }, // 设置请求的 header
       success: function (res) {
+        var ershouzhuanqu = res.data.reverse();
         that.setData({
-          ershoujiushu: res.data,
-        });
-      }
-    });
-    // 获取二手杂货数据
-    wx.request({
-      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
-      data: { isAll: 1, 'type': 6 },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { "content-type": "application/json" }, // 设置请求的 header
-      success: function (res) {
-        that.setData({
-          ershouzahuo: res.data,
+          ershouzhuanqu: ershouzhuanqu,
         });
       }
     });

@@ -4,8 +4,7 @@ Page({
     jingpinhaoshu:null,
     xinshuremai:null,
     jikemiaosha: null,
-    ershoujiushu: null,
-    ershouzahuo: null,
+    ershouzhuanqu: null,
   },
   search_page:function(){
     wx.navigateTo({
@@ -17,7 +16,6 @@ Page({
   },
   onLoad(e) {
     var that = this;
-
     this.setData({
       msgList: [
         { url: "url", title: "公告：欢迎来到肥肥怪的书吧" },
@@ -31,8 +29,9 @@ Page({
       method: 'GET',
       header: { "content-type": "application/json" },
       success: function (res) {
+        var resoutuijian = res.data.reverse();
         that.setData({
-          resoutuijian:res.data
+          resoutuijian: resoutuijian
         });
       }
     });
@@ -43,8 +42,9 @@ Page({
       method: 'GET',
       header: { "content-type": "application/json" },
       success: function (res) {
+        var jingpinhaoshu = res.data.reverse();
         that.setData({
-          jingpinhaoshu: res.data
+          jingpinhaoshu: jingpinhaoshu
         });
       }
     });
@@ -55,8 +55,9 @@ Page({
       method: 'GET',
       header: { "content-type": "application/json" },
       success: function (res) {
+        var xinshuremai = res.data.reverse();
         that.setData({
-          xinshuremai: res.data
+          xinshuremai: xinshuremai
         });
       }
     });
@@ -67,32 +68,22 @@ Page({
       method: 'GET',
       header: { "content-type": "application/json" },
       success: function (res) {
+        var jikemiaosha = res.data.reverse();
         that.setData({
-          jikemiaosha: res.data
+          jikemiaosha: jikemiaosha
         });
       }
     });
-    //二手旧书前三个数据抓取
+    //二手专区前三个数据抓取
     wx.request({
       url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
       data: { isAll: 1, 'type': 5 },
       method: 'GET',
       header: { "content-type": "application/json" },
       success: function (res) {
+        var ershouzhuanqu = res.data.reverse();
         that.setData({
-          ershoujiushu: res.data
-        });
-      }
-    });
-    //二手杂货前三个数据抓取
-    wx.request({
-      url: 'https://www.ffgbookbar.cn/BookStoreProject/public/store.php/showBooks',
-      data: { isAll: 1, 'type': 6 },
-      method: 'GET',
-      header: { "content-type": "application/json" },
-      success: function (res) {
-        that.setData({
-          ershouzahuo: res.data
+          ershouzhuanqu: ershouzhuanqu
         });
       }
     });
